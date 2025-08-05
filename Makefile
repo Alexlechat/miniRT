@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: anpicard <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/08/05 19:11:24 by anpicard          #+#    #+#              #
+#    Updated: 2025/08/05 19:11:25 by anpicard         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 .PHONY: all clean fclean re
 
 SRC_DIR     = src
@@ -37,21 +49,20 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/*/%.c $(INCS)
 $(MLX):
 	$(MAKE) -C $(MLX_DIR)
 
-$(LIBFT): force
-	$(MAKE) -C $(LIBFT_DIR)
+LIBFT_SRCS = $(wildcard $(LIBFT_DIR)/src/*/*.c)
 
-force:
+$(LIBFT): $(LIBFT_SRCS)
+	$(MAKE) -C $(LIBFT_DIR)
 
 $(NAME): $(LIBFT) $(MLX) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(MLX_LINKS) $(LIBFT) -o $(NAME)
 
 clean:
 	rm -rf $(OBJ_DIR)
-	rm -rf $(MLX_DIR)/obj
 	$(MAKE) clean -C $(LIBFT_DIR)
+	$(MAKE) clean -C $(MLX_DIR)
 
 fclean: clean
-	$(MAKE) clean -C $(MLX_DIR)
-	rm -f $(NAME) $(LIBFT)
+	rm -f $(NAME) $(LIBFT) $(MLX)
 
 re: fclean all
