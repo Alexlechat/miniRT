@@ -6,7 +6,7 @@ MLX_FLAGS	= -I/usr/include -Imlx_linux
 MLX_LINKS	= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 
-SRC_DIR		= sources
+SRC_DIR		= src
 OBJ_DIR		= .objects
 INC_DIR		= include
 LIBFT_DIR	= libft
@@ -23,7 +23,7 @@ OBJS		=	$(addprefix $(OBJ_DIR)/, $(LST_OBJS))
 
 CC 			=	cc
 NAME		=	miniRT
-FLAGS 		=	-Wall -Wextra -Werror -lm
+FLAGS 		=	-Wall -Wextra -Werror
 
 all: $(NAME)
 
