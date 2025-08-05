@@ -1,4 +1,4 @@
-# miniRT
+# miniRT test
 
 ## My first RayTracer with miniLibX
 
