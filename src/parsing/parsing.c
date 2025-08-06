@@ -1,38 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   elements.h                                         :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 09:32:13 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/06 10:44:04 by allefran         ###   ########.fr       */
+/*   Created: 2025/08/06 10:47:35 by allefran          #+#    #+#             */
+/*   Updated: 2025/08/06 10:47:36 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ELEMENTS_H
-# define ELEMENTS_H
-
-# include "utils.h"
-
-typedef struct s_ambient
-{
-	float			brightness;
-	t_color			color;
-}					t_ambient;
-
-typedef struct s_camera
-{
-	int				fov;
-	t_coordinates	position;
-	t_coordinates	orientation;
-}					t_camera;
-
-typedef struct s_light
-{
-	float			brightness;
-	t_color			color;
-	t_coordinates	position;
-}					t_light;
-
-#endif

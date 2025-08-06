@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_utils2.c                                     :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/05 20:40:00 by anpicard          #+#    #+#             */
-/*   Updated: 2025/08/05 20:57:44 by anpicard         ###   ########.fr       */
+/*   Created: 2025/08/06 09:38:09 by allefran          #+#    #+#             */
+/*   Updated: 2025/08/06 10:42:41 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/miniRT.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-//Libère un tableau de tokens
-void	free_tokens(char **tokens)
+typedef struct s_color
 {
-	int	i;
+	int	r;
+	int	g;
+	int	b;
+}		t_color;
 
-	if (!tokens)
-		return ;
-	i = 0;
-	while (tokens[i])
-	{
-		free(tokens[i]);
-		i++;
-	}
-	free(tokens);
-}
+typedef struct s_coordinates
+{
+	int	x;
+	int	y;
+	int	z;
+}		t_coordinates;
+
+#endif

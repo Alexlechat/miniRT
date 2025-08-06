@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   elements.h                                         :+:      :+:    :+:   */
+/*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 09:32:13 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/06 10:44:04 by allefran         ###   ########.fr       */
+/*   Created: 2025/08/06 09:54:35 by allefran          #+#    #+#             */
+/*   Updated: 2025/08/06 10:39:34 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ELEMENTS_H
-# define ELEMENTS_H
+#ifndef OBJECTS_H
+# define OBJECTS_H
 
 # include "utils.h"
 
-typedef struct s_ambient
+typedef struct s_sphere
 {
-	float			brightness;
-	t_color			color;
-}					t_ambient;
-
-typedef struct s_camera
-{
-	int				fov;
-	t_coordinates	position;
-	t_coordinates	orientation;
-}					t_camera;
-
-typedef struct s_light
-{
-	float			brightness;
+	int				diameter;
 	t_color			color;
 	t_coordinates	position;
-}					t_light;
+}					t_sphere;
+
+typedef struct s_plane
+{
+	t_color			color;
+	t_coordinates	vector;
+	t_coordinates	position;
+}					t_plane;
+
+typedef struct s_cylinder
+{
+	int				diameter;
+	int				height;
+	t_color			color;
+	t_coordinates	position;
+	t_coordinates	vector;
+}					t_cylinder;
 
 #endif
