@@ -2,7 +2,7 @@
 
 # Compiler and flags
 CC := cc
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -g3
 AR := ar
 ARFLAGS := rcs
 
@@ -21,14 +21,15 @@ MEM_FILES := mem/ft_memset.c mem/ft_bzero.c mem/ft_memcpy.c mem/ft_memmove.c \
 	mem/ft_memchr.c mem/ft_memcmp.c mem/ft_calloc.c
 
 CHAR_FILES := char/ft_isalpha.c char/ft_isdigit.c char/ft_isalnum.c \
-	char/ft_isascii.c char/ft_isprint.c char/ft_toupper.c char/ft_tolower.c
+	char/ft_isascii.c char/ft_isprint.c char/ft_toupper.c char/ft_tolower.c \
+	char/ft_iscapital.c char/ft_isminus.c
 
 LST_FILES := lst/ft_lstnew.c lst/ft_lstadd_front.c lst/ft_lstadd_back.c \
 	lst/ft_lstsize.c lst/ft_lstlast.c lst/ft_lstdelone.c lst/ft_lstclear.c \
 	lst/ft_lstiter.c lst/ft_lstmap.c
 
 IO_FILES := io/ft_putchar_fd.c io/ft_putstr_fd.c io/ft_putendl_fd.c \
-	io/ft_putnbr_fd.c io/ft_itoa.c io/ft_atoi.c
+	io/ft_putnbr_fd.c io/ft_itoa.c io/ft_atoi.c io/ft_atof.c
 
 PRINTF_FILES := printf/ft_printf.c printf/ft_printf_utils.c printf/ft_printf_hex.c \
 	printf/ft_printf_uns.c

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 10:47:35 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/07 09:29:02 by allefran         ###   ########.fr       */
+/*   Updated: 2025/08/07 14:40:19 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <fcntl.h>
 #include "miniRT.h"
-#include "libft/includes/libft.h"
+#include "libft.h"
 
 int	parse_file(int argc, char *file_name)
 {
@@ -37,34 +37,21 @@ int	parse_file(int argc, char *file_name)
 	return (1);
 }
 
+
 int	parse_line(char *line)
 {
-	int	i;
+	char **line_splited;
+	int i;
 
 	i = 0;
-	while (line[i])
+	line_splited = ft_split(line, ' ');
+	if (!line_splited)
+		return (-1);
+	if (line_splited[0] && ft_capital(line_splited[0][i]))
 	{
-		if (line[i] == '\t')
-			i++;
-		else if (ft_isalpha(line[i]))
-		{
-			/* code */
-		}
-		
-		
-		i++;
+		if(!mandatory_check(line_splited))
+			return (0);
 	}
 	return (1);
 }
 
-int	is_identifier(char *line)
-{
-	int i;
-
-	i = 0;
-	while (line[])
-	{
-		/* code */
-	}
-	
-}

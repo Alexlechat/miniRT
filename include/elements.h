@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   elements.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 09:32:13 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/06 10:44:04 by allefran         ###   ########.fr       */
+/*   Updated: 2025/08/07 13:00:09 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 typedef struct s_ambient
 {
-	float			brightness;
+	double			brightness;
 	t_color			color;
 }					t_ambient;
 
@@ -30,7 +30,7 @@ typedef struct s_camera
 
 typedef struct s_light
 {
-	float			brightness;
+	double			brightness;
 	t_color			color;
 	t_coordinates	position;
 }					t_light;
