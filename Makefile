@@ -49,7 +49,7 @@ $(MLX):
 	$(MAKE) -C $(MLX_DIR)
 
 $(NAME): $(LIBFT) $(MLX) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(MLX_LINKS) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_LINKS) -o $(NAME)
 
 clean:
 	rm -rf $(OBJ_DIR)

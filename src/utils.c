@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "miniRT.h"
-#include "libft/includes/libft.h"
+#include "libft.h"
 
 int print_error(char *str, int fd)
 {

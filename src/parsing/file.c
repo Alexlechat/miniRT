@@ -14,7 +14,7 @@
 #include <unistd.h>
 
 #include "miniRT.h"
-#include "libft/includes/libft.h"
+#include "libft.h"
 
 int	validate_file_name(char *file_name)
 {
