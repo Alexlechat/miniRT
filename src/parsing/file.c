@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 13:34:33 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/06 13:03:48 by allefran         ###   ########.fr       */
+/*   Updated: 2025/08/07 15:35:58 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,17 @@ int	file_exist(char *file_name)
 	}
 	return (1);
 }
+
+char	*trim_newline(char *str)
+{
+	int	i = 0;
+
+	while (str[i])
+	{
+		if (str[i] == '\n' || str[i] == '\r' || str[i] == '\t')
+			str[i] = '\0';
+		i++;
+	}
+	return (str);
+}
+

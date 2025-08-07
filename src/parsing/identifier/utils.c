@@ -6,7 +6,7 @@
 /*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:34:25 by anpicard          #+#    #+#             */
-/*   Updated: 2025/08/07 14:39:58 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/08/07 15:35:32 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	color_check(char *str)
 {
 	char	**arg_splited;
 	int		i;
+	int		val;
 
 	i = 0;
 	arg_splited = ft_split(str, ',');
@@ -32,12 +33,14 @@ int	color_check(char *str)
 		return (-1);
 	while (i < 3)
 	{
-		if (arg_splited[i] && (ft_atoi(arg_splited[i]) < 0
-				|| ft_atoi(arg_splited[i]) > 255))
+		if (!arg_splited[i])
+			return (0);
+		val = ft_atoi(trim_newline(arg_splited[i]));
+		if (val < 0 || val > 255)
 			return (0);
 		i++;
 	}
-	if (arg_splited[i + 1])
+	if (arg_splited[i])
 		return (0);
 	return (1);
 }
