@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   token.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/05 14:26:00 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/06 11:28:03 by allefran         ###   ########.fr       */
+/*   Created: 2025/08/07 08:15:08 by allefran          #+#    #+#             */
+/*   Updated: 2025/08/07 08:21:20 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#ifndef ELEMENTS_H
+# define ELEMENTS_H
 
-int	main(int argc, char **argv)
+# include "utils.h"
+
+typedef enum e_token
 {
-	if(!parse_file(argc, argv[1]))
-		return (print_error("Error\n", 2));
-	return (0);
-}
+	TOK_IDENTIFIER = 0,
+	TOK_AMBIENT,
+	TOK_COLOR,
+	TOK_POSITION,
+	TOK_ORIENTATION,
+	TOK_FOV,
+	TOK_BRIGHTNESS,
+	TOK_DIAMETER,
+	TOK_HEIGHT,
+}					t_token;
+
+
+#endif

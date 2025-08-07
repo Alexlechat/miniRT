@@ -1,41 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/05 13:34:33 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/06 13:03:48 by allefran         ###   ########.fr       */
+/*   Created: 2025/08/06 11:19:21 by allefran          #+#    #+#             */
+/*   Updated: 2025/08/07 08:29:18 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <fcntl.h>
-#include <unistd.h>
 
 #include "miniRT.h"
 #include "libft/includes/libft.h"
 
-int	validate_file_name(char *file_name)
+int print_error(char *str, int fd)
 {
-	int	i;
-
-	i = ft_strlen(file_name) - 3;
-	if(ft_strncmp(file_name + i, ".rt", 3) != 0)
-		return (0);
-	
-	return (1);
+	ft_putstr_fd(str, fd);
+	return (-1);
 }
 
-int	file_exist(char *file_name)
-{
-	int fd;
-
-	fd = open(file_name, O_RDONLY);
-	if (fd == -1)
-	{
-		close(fd);
-		return(print_error("Error\n", 2));
-	}
-	return (1);
-}
