@@ -6,7 +6,7 @@
 /*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:57:40 by anpicard          #+#    #+#             */
-/*   Updated: 2025/08/07 14:08:43 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/08/08 14:38:21 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
-int					ft_minus(int c);
+int					ft_minus(char c);
 int					ft_capital(char c);
 
 /* *********************************************************************** */

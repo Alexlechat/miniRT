@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 10:47:35 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/08 13:50:31 by allefran         ###   ########.fr       */
+/*   Updated: 2025/08/08 15:14:44 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,21 @@ int	parse_file(int argc, char *file_name)
 	return (1);
 }
 
-static int	parse_line(char *line, int *count_elements)
+int	parse_line(char *line, int *count_elements)//TODO segfault
 {
-	char	**line_splited;
-	int		i;
-
-	i = 0;
-	line_splited = split_trimed(line);
+	char **line_splited = split_trimed(line);
 	if (!line_splited)
-		return (-1);
-	if (line_splited[0] && ft_capital(line_splited[0][i]))
+		return (0);
+	if (!line_splited[0])
+		return (0);
+	if (ft_capital(line_splited[0][0]))
 	{
 		if (!mandatory_check(line_splited, count_elements))
+			return (0);
+	}
+	else
+	{
+		if (!bonus_check(line_splited))
 			return (0);
 	}
 	return (1);

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isminus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:45:29 by anpicard          #+#    #+#             */
-/*   Updated: 2025/08/08 13:10:30 by allefran         ###   ########.fr       */
+/*   Updated: 2025/08/08 14:38:04 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_minus(int c)
+int	ft_minus(char c)
 {
 	int	result;
 
