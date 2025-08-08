@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 09:24:20 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/08 11:27:54 by allefran         ###   ########.fr       */
+/*   Updated: 2025/08/08 13:49:36 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,13 @@ typedef struct s_scene
 
 int				parse_file(int argc, char *file_name);
 int				validate_file(char *file_name);
-int				mandatory_check(char **line);
+int				mandatory_check(char **line, int *count_elements);
 
 // -------elements--------
 
-int				light(char **line);
-int				ambient(char **line);
-int				camera(char **line);
-
+int				light(char **line, int *l_count);
+int				ambient(char **line, int *a_count);
+int				camera(char **line, int *c_count);
 // ------------------------UTILS-----------------------
 
 int				ratio_check(char *str);

@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 10:47:35 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/08 11:39:02 by allefran         ###   ########.fr       */
+/*   Updated: 2025/08/08 13:50:31 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int	parse_line(char *line);
+static int	parse_line(char *line, int *count_elements);
 static char	**split_trimed(char *line);
 
 int	parse_file(int argc, char *file_name)
 {
 	int		fd;
 	char	*line;
+	int		count_elements[3];
 
+	count_elements[0] = 0;
+	count_elements[1] = 0;
+	count_elements[2] = 0;
 	if (argc != 2)
 		return (print_error("Usage : ./miniRT <scene.rt>\n", 2));
 	if (!validate_file(file_name))
@@ -33,14 +37,14 @@ int	parse_file(int argc, char *file_name)
 	while (line)
 	{
 		printf("%s", line);
-		if (parse_line(line) != 1)
+		if (parse_line(line, count_elements) != 1)
 			return (print_error("Error\n", 2));
 		line = get_next_line(fd);
 	}
 	return (1);
 }
 
-static int	parse_line(char *line)
+static int	parse_line(char *line, int *count_elements)
 {
 	char	**line_splited;
 	int		i;
@@ -51,7 +55,7 @@ static int	parse_line(char *line)
 		return (-1);
 	if (line_splited[0] && ft_capital(line_splited[0][i]))
 	{
-		if (!mandatory_check(line_splited))
+		if (!mandatory_check(line_splited, count_elements))
 			return (0);
 	}
 	return (1);
