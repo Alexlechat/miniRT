@@ -3,20 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 13:34:33 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/07 15:35:58 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/08/08 08:26:23 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <unistd.h>
-
-#include "miniRT.h"
 #include "libft.h"
+#include "miniRT.h"
 
-int	validate_file_name(char *file_name)
+static int	file_exist(char *file_name);
+static int	validate_file_name(char *file_name);
+
+int	validate_file(char *file_name)
+{
+	if (!file_exist(file_name))
+		return (0);
+	if (!validate_file_name(file_name))
+		return (0);
+	return (1);
+}
+
+static int	validate_file_name(char *file_name)
 {
 	int	i;
 
@@ -27,7 +38,7 @@ int	validate_file_name(char *file_name)
 	return (1);
 }
 
-int	file_exist(char *file_name)
+static int	file_exist(char *file_name)
 {
 	int fd;
 
@@ -39,17 +50,3 @@ int	file_exist(char *file_name)
 	}
 	return (1);
 }
-
-char	*trim_newline(char *str)
-{
-	int	i = 0;
-
-	while (str[i])
-	{
-		if (str[i] == '\n' || str[i] == '\r' || str[i] == '\t')
-			str[i] = '\0';
-		i++;
-	}
-	return (str);
-}
-

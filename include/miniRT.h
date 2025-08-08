@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 09:24:20 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/07 15:36:21 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/08/08 08:44:33 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_scene
 // -----------------------PARSING---------------------
 
 int				parse_file(int argc, char *file_name);
-int				validate_file_name(char *file_name);
+int				validate_file(char *file_name);
 int				mandatory_check(char **line);
 int				parse_line(char *line);
 
@@ -42,12 +42,14 @@ int				camera(char **line);
 
 // ------------------------UTILS-----------------------
 
-int				print_error(char *str, int fd);
-int				file_exist(char *file_name);
 int				ratio_check(char *str);
-int				is_number(char **line);
-int				coordinate_check(char *str);
 int				color_check(char *str);
+int				coordinate_check(char *str);
+int				vector_orientation_check(char *str);
+int				fov_check(char *str);
+
+int				print_error(char *str, int fd);
+int				is_number(char **line);
 char			*trim_newline(char *str);
 
 #endif

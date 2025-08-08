@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 10:47:35 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/07 14:40:19 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/08/08 08:27:06 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	parse_file(int argc, char *file_name)
 
 	if (argc != 2)
 		return(print_error("Usage : ./miniRT <scene.rt>\n", 2));
-	if (!validate_file_name(file_name))
+	if (!validate_file(file_name))
 		return(print_error("Error\n", 2));
 	fd = open(file_name, O_RDONLY);
 	line = get_next_line(fd);
@@ -36,7 +36,6 @@ int	parse_file(int argc, char *file_name)
 	
 	return (1);
 }
-
 
 int	parse_line(char *line)
 {
@@ -54,4 +53,3 @@ int	parse_line(char *line)
 	}
 	return (1);
 }
-

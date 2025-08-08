@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:34:25 by anpicard          #+#    #+#             */
-/*   Updated: 2025/08/07 15:35:32 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/08/08 09:11:57 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,23 +66,15 @@ int	coordinate_check(char *str)
 	return (1);
 }
 
-int	is_number(char **line)
+int	vector_orientation_check(char *str)
 {
-	int i;
-	int j;
+	(void)str;
+	return (1);
+}
 
-	i = 1;
-	while (line[i])
-	{
-		j = 0;
-		while (line[i][j])
-		{
-			if (line[i][j] != '-' && line[i][j] != '.' && line[i][j] != ','
-				&& (line[i][j] < '0' || line[i][j] > '-'))
-				return (0);
-			j++;
-		}
-		i++;
-	}
+int fov_check(char *str)
+{
+	if (ft_atoi(trim_newline(str)) < 0 || ft_atoi(trim_newline(str)) > 180)
+		return (0);
 	return (1);
 }
