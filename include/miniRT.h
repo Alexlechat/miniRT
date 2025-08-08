@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 09:24:20 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/08 08:44:33 by allefran         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:27:54 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_scene
 int				parse_file(int argc, char *file_name);
 int				validate_file(char *file_name);
 int				mandatory_check(char **line);
-int				parse_line(char *line);
 
 // -------elements--------
 
@@ -48,8 +47,10 @@ int				coordinate_check(char *str);
 int				vector_orientation_check(char *str);
 int				fov_check(char *str);
 
+void			free_all(char **str);
+char			*trim_newline(char *str);
 int				print_error(char *str, int fd);
 int				is_number(char **line);
-char			*trim_newline(char *str);
+int				count_words(char **str);
 
 #endif

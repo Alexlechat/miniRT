@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 14:26:00 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/07 14:22:58 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/08/08 13:13:54 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	if(!parse_file(argc, argv[1]))
+	if (!parse_file(argc, argv[1]))
 		return (print_error("Error\n", 2));
 	return (0);
 }

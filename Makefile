@@ -3,53 +3,54 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anpicard <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: allefran <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/05 19:11:24 by anpicard          #+#    #+#              #
-#    Updated: 2025/08/07 13:52:49 by anpicard         ###   ########.fr        #
+#    Updated: 2025/08/08 13:09:00 by allefran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re bonus
 
-SRC_DIR     = src
-OBJ_DIR     = .objects
-INC_DIR     = include
-LIBFT_DIR   = libft
-MLX_DIR     = mlx_linux
+# ==== CONFIGURATION ====
+NAME        := miniRT
+CC          := cc
+CFLAGS      := -Wall -Wextra -Werror -g3
 
-LIBFT       = $(LIBFT_DIR)/libft.a
-MLX         = $(MLX_DIR)/libmlx_Linux.a
+SRC_DIR     := src
+OBJ_DIR     := .objects
+INC_DIR     := include
 
-CFLAGS      = -Wall -Wextra -Werror -g3
-MLX_FLAGS   = -I/usr/include -I$(MLX_DIR)
-MLX_LINKS   = -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+LIBFT_DIR   := libft
+LIBFT       := $(LIBFT_DIR)/libft.a
+LIBFT_SRCS  := $(shell find $(LIBFT_DIR) -name "*.c")
 
-LST_SRCS	= $(shell find $(SRC_DIR) -name "*.c")
-LST_OBJS    = $(LST_SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+MLX_DIR     := mlx_linux
+MLX         := $(MLX_DIR)/libmlx_Linux.a
+MLX_FLAGS   := -I/usr/include -I$(MLX_DIR)
+MLX_LINKS   := -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 
-SRCS        = $(LST_SRCS)
-OBJS        = $(LST_OBJS)
+INCS        := -I$(INC_DIR) -I$(LIBFT_DIR)/includes
 
-INCS        = -I$(INC_DIR) -I$(LIBFT_DIR)/includes
+SRCS        := $(shell find $(SRC_DIR) -name "*.c")
+OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-CC          = cc
-NAME        = miniRT
+# ==== RULES ====
 
 all: $(NAME)
+
+$(NAME): $(LIBFT) $(MLX) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_LINKS) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(MLX_FLAGS) $(INCS) -c $< -o $@
 
-$(LIBFT):
+$(LIBFT): $(LIBFT_SRCS)
 	$(MAKE) -C $(LIBFT_DIR)
 
 $(MLX):
 	$(MAKE) -C $(MLX_DIR)
-
-$(NAME): $(LIBFT) $(MLX) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_LINKS) -o $(NAME)
 
 clean:
 	rm -rf $(OBJ_DIR)

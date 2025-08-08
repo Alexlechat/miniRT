@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:29:39 by anpicard          #+#    #+#             */
-/*   Updated: 2025/08/07 15:05:36 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/08/08 13:12:17 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 static int	is_valid_float(const char *s)
 {
-	int i = 0;
-	int dot_count = 0;
-	int digit_found = 0;
+	int	i;
+	int	dot_count;
+	int	digit_found;
 
-	while (s[i] == ' ' || (s[i] >= 9 && s[i] <= 13))
-		i++;
+	i = 0;
+	dot_count = 0;
+	digit_found = 0;
 	if (s[i] == '+' || s[i] == '-')
 		i++;
 	while (s[i])
@@ -39,14 +40,21 @@ static int	is_valid_float(const char *s)
 	return (digit_found);
 }
 
-static const char	*ft_parse_sign_and_integer(const char *s, int *sign, double *res)
+static const char	*ft_parse_sign_and_integer(const char *s, int *sign,
+		double *res)
 {
 	*sign = 1;
 	*res = 0.0;
 	while (*s == ' ' || (*s >= 9 && *s <= 13))
 		s++;
 	if (*s == '-' || *s == '+')
-		*sign = (*s++ == '-') ? -1 : 1;
+	{
+		if (*s == '-')
+			*sign = -1;
+		else
+			*sign = 1;
+		s++;
+	}
 	while (*s >= '0' && *s <= '9')
 	{
 		*res = *res * 10.0 + (*s - '0');
@@ -57,9 +65,11 @@ static const char	*ft_parse_sign_and_integer(const char *s, int *sign, double *r
 
 static double	ft_parse_fraction(const char *s)
 {
-	double	f = 0.0;
-	int		i = 0;
+	double	f;
+	int		i;
 
+	f = 0.0;
+	i = 0;
 	while (s[i] >= '0' && s[i] <= '9')
 	{
 		f = f * 10.0 + (s[i] - '0');
@@ -74,10 +84,9 @@ double	ft_atof(const char *s)
 	int		sign;
 
 	if (!is_valid_float(s))
-		return (-1.0);
+		return (-1);
 	s = ft_parse_sign_and_integer(s, &sign, &res);
 	if (*s == '.' && s[1] >= '0' && s[1] <= '9')
 		res += ft_parse_fraction(++s);
 	return (res * sign);
 }
-
