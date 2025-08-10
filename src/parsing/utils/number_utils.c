@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.c                                           :+:      :+:    :+:   */
+/*   number_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: apicard <apicard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 11:02:32 by anpicard          #+#    #+#             */
-/*   Updated: 2025/08/08 13:49:18 by allefran         ###   ########.fr       */
+/*   Created: 2025/01/08 18:08:00 by apicard           #+#    #+#             */
+/*   Updated: 2025/01/08 18:08:00 by apicard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	camera(char **line, int *c_count)
+int	is_valid_number(char *str)
 {
-	if (line[1] && !coordinate_check(line[1]))
+	int	i;
+	int	dot_count;
+
+	if (!str || !*str)
 		return (0);
-	if (line[2] && !vector_orientation_check(line[2]))
+	i = 0;
+	dot_count = 0;
+	if (str[i] == '-')
+		i++;
+	if (!str[i])
 		return (0);
-	if (line[3] && !fov_check(line[3]))
-		return (0);
-	if (line[4])
-		return (0);
-	c_count[2] += 1;
-	if (c_count[2] > 1)
-		return (0);
+	while (str[i])
+	{
+		if (str[i] == '.')
+		{
+			dot_count++;
+			if (dot_count > 1)
+				return (0);
+		}
+		else if (str[i] < '0' || str[i] > '9')
+			return (0);
+		i++;
+	}
 	return (1);
 }

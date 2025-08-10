@@ -19,11 +19,11 @@ static int	cylinder(char **line);
 
 int	bonus_check(char **line_splited)
 {
-	if (ft_strncmp(line_splited[0], "pl", 2))
+	if (ft_strncmp(line_splited[0], "pl", 2) == 0)
 		return (plane(line_splited));
-	else if (ft_strncmp(line_splited[0], "sp", 2))
+	else if (ft_strncmp(line_splited[0], "sp", 2) == 0)
 		return (sphere(line_splited));
-	else if (ft_strncmp(line_splited[0], "cy", 2))
+	else if (ft_strncmp(line_splited[0], "cy", 2) == 0)
 		return (cylinder(line_splited));
 	return (0);
 }
@@ -43,14 +43,46 @@ static int	plane(char **line)
 
 static int	sphere(char **line)
 {
+	double	diameter;
+
 	if (line[1] && !coordinate_check(line[1]))
 		return (0);
-	if (line[2] && !ft_atof(line[2]))
-		return (0);
+	if (line[2])
+	{
+		if (!is_valid_number(line[2]))
+			return (0);
+		diameter = ft_atof(line[2]);
+		if (diameter <= 0)
+			return (0);
+	}
 	if (line[3] && !color_check(line[3]))
 		return (0);
 	if (line[4])
 		return (0);
+	return (1);
+}
+
+static int	validate_cylinder_dimensions(char **line)
+{
+	double	diameter;
+	double	height;
+
+	if (line[3])
+	{
+		if (!is_valid_number(line[3]))
+			return (0);
+		diameter = ft_atof(line[3]);
+		if (diameter <= 0)
+			return (0);
+	}
+	if (line[4])
+	{
+		if (!is_valid_number(line[4]))
+			return (0);
+		height = ft_atof(line[4]);
+		if (height <= 0)
+			return (0);
+	}
 	return (1);
 }
 
@@ -60,9 +92,7 @@ static int	cylinder(char **line)
 		return (0);
 	if (line[2] && !vector_orientation_check(line[2]))
 		return (0);
-	if (line[3] && !ft_atof(line[3]))
-		return (0);
-	if (line[4] && !ft_atof(line[4]))
+	if (!validate_cylinder_dimensions(line))
 		return (0);
 	if (line[5] && !color_check(line[5]))
 		return (0);

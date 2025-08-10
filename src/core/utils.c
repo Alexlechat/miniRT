@@ -1,27 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ambient.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 11:02:14 by anpicard          #+#    #+#             */
-/*   Updated: 2025/08/08 13:49:59 by allefran         ###   ########.fr       */
+/*   Created: 2025/08/06 11:19:21 by allefran          #+#    #+#             */
+/*   Updated: 2025/08/08 13:14:09 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "miniRT.h"
+#include <stdlib.h>
 
-int	ambient(char **line, int *a_count)
+void	free_all(char **str)
 {
-	if (line[1] && !ratio_check(line[1]))
-		return (0);
-	if (line[2] && !color_check(line[2]))
-		return (0);
-	if (line[3])
-		return (0);
-	a_count[0] += 1;
-	if (a_count[0] > 1)
-		return (0);
-	return (1);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
+int	print_error(char *str, int fd)
+{
+	ft_putstr_fd(str, fd);
+	return (-1);
+}
+
+int	count_words(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

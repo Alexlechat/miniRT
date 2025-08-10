@@ -43,9 +43,7 @@ static int	file_exist(char *file_name)
 
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-	{
-		close(fd);
-		return (print_error("Error\n", 2));
-	}
+		return (0);
+	close(fd);
 	return (1);
 }
