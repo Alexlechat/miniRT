@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 09:24:20 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/10 11:19:58 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/08/28 11:09:27 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char			**split_trimed(char *line);
 int				parse_line(char *line, int *ambient_count,
 					int *light_count, int *camera_count);
 int				parse_mandatory_elements(char *identifier, char **line_splited,
-				int **counts);
+					int **counts);
 int				parse_bonus_objects(char *identifier, char **line_splited);
 int				check_consecutive_commas(char *str);
 char			**split_and_validate_count(char *str);

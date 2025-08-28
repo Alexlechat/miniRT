@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   display.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/05 14:26:00 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/28 11:11:47 by allefran         ###   ########.fr       */
+/*   Created: 2025/08/28 08:57:14 by allefran          #+#    #+#             */
+/*   Updated: 2025/08/28 11:07:33 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
-#include "display.h"
+#ifndef DISPLAY_H
+# define DISPLAY_H
 
-int	main(int argc, char **argv)
+# include "../mlx_linux/mlx.h"
+
+# define KEY_ESC 65307   // ESC
+# define EVENT_CLOSE 17  // (cross X)
+
+typedef struct s_display
 {
-	t_display	display;
+	void	*mlx;
+	void	*window;
+	int		height;
+	int		width;
+}			t_display;
 
-	display.height = 600;
-	display.width = 800;
-	if (!parse_file(argc, argv[1]))
-		return (print_error("Error\n", 2));
-	init_window(&display);
-	mlx_hook(display.window, EVENT_CLOSE, 0, close_window, &display);
-	mlx_key_hook(display.window, key_press, &display);
-	mlx_loop(display.mlx);
-	return (0);
-}
+void	init_window(t_display *display);
+int		close_window(t_display *display);
+int		key_press(int key_code, t_display *display);
+
+#endif

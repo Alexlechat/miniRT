@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_elements.c                                   :+:      :+:    :+:   */
+/*   elements_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:34:25 by anpicard          #+#    #+#             */
-/*   Updated: 2025/08/08 17:23:35 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/08/28 11:11:14 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "miniRT.h"
-#include <float.h>
 
 static int	validate_color_values(char **arg_splited, int word_count)
 {
