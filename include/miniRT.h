@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 09:24:20 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/28 11:09:27 by allefran         ###   ########.fr       */
+/*   Updated: 2025/08/28 17:13:51 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_scene
 
 // -----------------------PARSING---------------------
 
-int				parse_file(int argc, char *file_name);
+int				parse_file(char *file_name);
 int				validate_file(char *file_name);
 int				bonus_check(char **line);
 int				ambient(char **line, int *ambient_count);

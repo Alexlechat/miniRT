@@ -6,7 +6,7 @@
 /*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 10:47:35 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/08 18:26:04 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/08/28 17:12:55 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	process_file_lines(int fd, int *counts)
 	return (1);
 }
 
-int	parse_file(int argc, char *file_name)
+int	parse_file(char *file_name)
 {
 	int		fd;
 	int		counts[3];
@@ -43,8 +43,6 @@ int	parse_file(int argc, char *file_name)
 	counts[0] = 0;
 	counts[1] = 0;
 	counts[2] = 0;
-	if (argc != 2)
-		return (print_error("Usage : ./miniRT <scene.rt>\n", 2));
 	if (!validate_file(file_name))
 		return (print_error("Error\n", 2));
 	fd = open(file_name, O_RDONLY);

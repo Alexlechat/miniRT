@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 11:19:21 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/08 13:14:09 by allefran         ###   ########.fr       */
+/*   Updated: 2025/08/28 17:09:23 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	free_all(char **str)
 int	print_error(char *str, int fd)
 {
 	ft_putstr_fd(str, fd);
-	return (-1);
+	return (0);
 }
 
 int	count_words(char **str)
