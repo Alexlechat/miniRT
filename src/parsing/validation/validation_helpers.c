@@ -41,7 +41,7 @@ char	**split_and_validate_count(char *str)
 		word_count++;
 	if (word_count != 3)
 	{
-		free_all(arg_splited);
+		free_str(arg_splited);
 		return (NULL);
 	}
 	return (arg_splited);

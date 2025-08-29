@@ -6,15 +6,16 @@
 /*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 11:19:21 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/28 17:09:23 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/08/29 11:45:00 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "miniRT.h"
+#include "display.h"
 #include <stdlib.h>
 
-void	free_all(char **str)
+void	free_str(char **str)
 {
 	int	i;
 
@@ -25,6 +26,27 @@ void	free_all(char **str)
 		i++;
 	}
 	free(str);
+}
+
+void	free_display(t_display *display)
+{
+	if (!display)
+		return ;
+	if (display->sphere)
+	{
+		free(display->sphere);
+		display->sphere = NULL;
+	}
+	if (display->plane)
+	{
+		free(display->plane);
+		display->plane = NULL;
+	}
+	if (display->cylinder)
+	{
+		free(display->cylinder);
+		display->cylinder = NULL;
+	}
 }
 
 int	print_error(char *str, int fd)

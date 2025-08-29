@@ -22,7 +22,7 @@ static char	**allocate_trim_array(char **line_splited, int word_count)
 
 	trim_splited = malloc(sizeof(char *) * (word_count + 1));
 	if (!trim_splited)
-		free_all(line_splited);
+		free_str(line_splited);
 	return (trim_splited);
 }
 
@@ -65,37 +65,36 @@ char	**split_trimed(char *line)
 		return (NULL);
 	if (process_trimmed_words(line_splited, trim_splited) == -1)
 	{
-		free_all(trim_splited);
-		free_all(line_splited);
+		free_str(trim_splited);
+		free_str(line_splited);
 		return (NULL);
 	}
-	free_all(line_splited);
+	free_str(line_splited);
 	return (trim_splited);
 }
 
-int	parse_line(char *line, int *ambient_count,
-		int *light_count, int *camera_count)
+int	parse_line(char *line, t_count *count, t_display *display)
 {
 	char	**line_splited;
 	char	*identifier;
 	int		result;
 	int		*counts[3];
 
-	counts[0] = ambient_count;
-	counts[1] = light_count;
-	counts[2] = camera_count;
+	counts[0] = &count->ambient;
+	counts[1] = &count->light;
+	counts[2] = &count->camera;
 	line_splited = split_trimed(line);
 	if (!line_splited)
 		return (0);
 	identifier = line_splited[0];
 	if (!identifier)
 	{
-		free_all(line_splited);
+		free_str(line_splited);
 		return (1);
 	}
-	result = parse_mandatory_elements(identifier, line_splited, counts);
+	result = parse_mandatory_elements(identifier, line_splited, counts, display);
 	if (result == -1)
 		result = parse_bonus_objects(identifier, line_splited);
-	free_all(line_splited);
+	free_str(line_splited);
 	return (result);
 }

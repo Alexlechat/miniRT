@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:41:50 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/28 11:12:18 by allefran         ###   ########.fr       */
+/*   Updated: 2025/08/29 12:27:32 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ int	close_window(t_display *display)
 	if (display->window)
 		mlx_destroy_window(display->mlx, display->window);
 	if (display->mlx)
+	{
 		mlx_destroy_display(display->mlx);
+		free(display->mlx);
+	}
 	exit (0);
 }
 

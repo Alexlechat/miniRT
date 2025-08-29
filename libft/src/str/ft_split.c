@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:23:26 by anpicard          #+#    #+#             */
-/*   Updated: 2025/08/05 13:23:54 by allefran         ###   ########.fr       */
+/*   Updated: 2025/08/29 09:30:49 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	*ft_copy_words(char const *src, size_t len)
 	return (str);
 }
 
-static void	ft_free_all(char **split, size_t count)
+static void	ft_free_str(char **split, size_t count)
 {
 	size_t	i;
 
@@ -79,7 +79,7 @@ static char	**split_words(char const *s, char c, char **split)
 			split[k] = ft_copy_words(s + j, i - j);
 			if (!split[k++])
 			{
-				ft_free_all(split, k);
+				ft_free_str(split, k);
 				return (NULL);
 			}
 		}

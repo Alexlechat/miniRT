@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   elements_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:34:25 by anpicard          #+#    #+#             */
-/*   Updated: 2025/08/28 11:11:14 by allefran         ###   ########.fr       */
+/*   Updated: 2025/08/29 09:30:49 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ int	color_check(char *str)
 	if (!arg_splited)
 		return (0);
 	result = validate_color_values(arg_splited, 3);
-	free_all(arg_splited);
+	free_str(arg_splited);
 	return (result);
 }

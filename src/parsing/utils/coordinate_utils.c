@@ -46,7 +46,7 @@ int	coordinate_check(char *str)
 	if (!arg_splited)
 		return (0);
 	result = validate_coordinate_values(arg_splited, 3);
-	free_all(arg_splited);
+	free_str(arg_splited);
 	return (result);
 }
 
@@ -89,6 +89,6 @@ int	vector_orientation_check(char *str)
 	if (!arg_splited)
 		return (0);
 	result = validate_vector_values(arg_splited, 3);
-	free_all(arg_splited);
+	free_str(arg_splited);
 	return (result);
 }
