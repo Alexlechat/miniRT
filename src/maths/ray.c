@@ -6,14 +6,14 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 13:11:46 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/01 14:20:25 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/01 14:25:02 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
 #include "display.h"
+#include <math.h>
 
-void	draw_ray(t_display *display)
-{
+// void	draw_ray(t_display *display)
+// {
 
-}
+// }

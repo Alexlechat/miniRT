@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vecor_utils.c                                      :+:      :+:    :+:   */
+/*   vector_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 13:42:16 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/01 14:19:58 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/01 14:25:38 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_vector	substract(t_vector u, t_vector v)
 
 t_vector	multiply(t_vector u, int scalar)
 {
-	t_vector result;
+	t_vector	result;
 
 	result.x = u.x * scalar;
 	result.y = u.y * scalar;

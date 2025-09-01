@@ -6,14 +6,14 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 14:26:00 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/01 11:06:40 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/01 14:24:06 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
 #include "display.h"
+#include "miniRT.h"
 
-void init_camera(t_camera *camera);
+void	init_camera(t_camera *camera);
 
 int	main(int argc, char **argv)
 {
@@ -33,5 +33,3 @@ int	main(int argc, char **argv)
 	mlx_loop(display.mlx);
 	return (0);
 }
-
-

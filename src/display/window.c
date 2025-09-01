@@ -6,14 +6,14 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:41:50 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/01 09:06:29 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/01 14:24:28 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "display.h"
+#include <stdlib.h>
 
-int	close_window(t_display *display);
+int			close_window(t_display *display);
 
 static void	init_mlx(t_display *display)
 {
@@ -40,7 +40,7 @@ int	close_window(t_display *display)
 		mlx_destroy_display(display->mlx);
 		free(display->mlx);
 	}
-	exit (0);
+	exit(0);
 }
 
 int	key_press(int key_code, t_display *display)
@@ -49,4 +49,3 @@ int	key_press(int key_code, t_display *display)
 		close_window(display);
 	return (0);
 }
-
