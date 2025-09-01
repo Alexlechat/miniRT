@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:57:14 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/01 11:04:14 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/01 13:06:54 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define ORIGIN_Y (DEFAULT_HEIGHT / 2)
 # define ORIGIN_Z 0
 # define RED 0xFF0000
-# define GREEN 0x008000
+# define GREEN 0x00FF00
 
 typedef struct s_display
 {

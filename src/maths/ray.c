@@ -1,38 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 09:38:09 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/01 13:44:32 by allefran         ###   ########.fr       */
+/*   Created: 2025/09/01 13:11:46 by allefran          #+#    #+#             */
+/*   Updated: 2025/09/01 14:20:25 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include <math.h>
+#include "display.h"
 
-typedef struct s_color
+void	draw_ray(t_display *display)
 {
-	int	r;
-	int	g;
-	int	b;
-}		t_color;
 
-typedef struct s_coordinates
-{
-	int	x;
-	int	y;
-	int	z;
-}		t_coordinates;
-
-typedef struct s_vector
-{
-	int	x;
-	int	y;
-	int	z;
-}		t_vector;
-
-
-#endif
+}
