@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:41:50 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/29 12:27:32 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/09/01 09:06:29 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,3 +49,4 @@ int	key_press(int key_code, t_display *display)
 		close_window(display);
 	return (0);
 }
+

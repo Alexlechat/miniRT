@@ -1,0 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/01 09:14:35 by allefran          #+#    #+#             */
+/*   Updated: 2025/09/01 11:09:49 by allefran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "display.h"
+
+void init_camera(t_camera *camera);
+int draw_origin(t_display *display);
+int draw_camera(t_display *display, t_camera *camera);
+
+
+int render(t_display *display)
+{
+	t_camera camera;
+	
+	init_camera(&camera); 
+	if (!display->window)
+	return (1);
+	draw_origin(display);
+	draw_camera(display, &camera);
+	return (0);
+}
+
+int draw_camera(t_display *display, t_camera *camera)
+{
+	if (!display->window)
+	return (1);
+	mlx_pixel_put(display->mlx, display->window, camera->position.x + ORIGIN_X, camera->position.y + ORIGIN_Y, GREEN);
+	return (0);
+}
+
+int draw_origin(t_display *display)
+{
+	if (!display->window)
+	return (1);
+	mlx_pixel_put(display->mlx, display->window, ORIGIN_X, ORIGIN_Y, RED);
+	return (0);
+}
+
+void init_camera(t_camera *camera)
+{
+	camera->fov = 70;
+	camera->position.x = -500;
+	camera->position.y = 0;
+	camera->position.z = 30;
+}
