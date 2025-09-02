@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:57:14 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/01 13:06:54 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/02 14:33:11 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define ORIGIN_Z 0
 # define RED 0xFF0000
 # define GREEN 0x00FF00
+# define BLUE 0x0000FF
 
 typedef struct s_display
 {
@@ -50,5 +51,6 @@ void	init_display(t_display *display);
 int		close_window(t_display *display);
 int		key_press(int key_code, t_display *display);
 int 	render(t_display *display);
+int		draw_line(t_display *display, t_vector vector, int length, int color);
 
 #endif
