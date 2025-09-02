@@ -6,29 +6,30 @@
 /*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 14:39:10 by anpicard          #+#    #+#             */
-/*   Updated: 2025/08/08 15:11:49 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/09/02 10:22:08 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "miniRT.h"
+#include "display.h"
 
-static int	sphere(char **line);
-static int	plane(char **line);
-static int	cylinder(char **line);
+static int	sphere(char **line, t_display *display);
+static int	plane(char **line, t_display *display);
+static int	cylinder(char **line, t_display *display);
 
-int	bonus_check(char **line_splited)
+int	bonus_check(char **line_splited, t_display *display)
 {
 	if (ft_strncmp(line_splited[0], "pl", 2) == 0)
-		return (plane(line_splited));
+		return (plane(line_splited, display));
 	else if (ft_strncmp(line_splited[0], "sp", 2) == 0)
-		return (sphere(line_splited));
+		return (sphere(line_splited, display));
 	else if (ft_strncmp(line_splited[0], "cy", 2) == 0)
-		return (cylinder(line_splited));
+		return (cylinder(line_splited, display));
 	return (0);
 }
 
-static int	plane(char **line)
+static int	plane(char **line, t_display *display)
 {
 	if (line[1] && !coordinate_check(line[1]))
 		return (0);
@@ -38,10 +39,12 @@ static int	plane(char **line)
 		return (0);
 	if (line[4])
 		return (0);
+	if (!add_values_pl(line, display))
+		return (0);
 	return (1);
 }
 
-static int	sphere(char **line)
+static int	sphere(char **line, t_display *display)
 {
 	double	diameter;
 
@@ -58,6 +61,8 @@ static int	sphere(char **line)
 	if (line[3] && !color_check(line[3]))
 		return (0);
 	if (line[4])
+		return (0);
+	if (!add_values_sp(line, display))
 		return (0);
 	return (1);
 }
@@ -86,7 +91,7 @@ static int	validate_cylinder_dimensions(char **line)
 	return (1);
 }
 
-static int	cylinder(char **line)
+static int	cylinder(char **line, t_display *display)
 {
 	if (line[1] && !coordinate_check(line[1]))
 		return (0);
@@ -97,6 +102,8 @@ static int	cylinder(char **line)
 	if (line[5] && !color_check(line[5]))
 		return (0);
 	if (line[6])
+		return (0);
+	if (!add_values_cy(line, display))
 		return (0);
 	return (1);
 }

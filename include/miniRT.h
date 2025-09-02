@@ -6,7 +6,7 @@
 /*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 09:24:20 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/29 12:40:46 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/09/02 10:04:42 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,17 @@ typedef struct s_count
 
 int		parse_file(char *file_name, t_display *display);
 int		validate_file(char *file_name);
-int		bonus_check(char **line);
+int		bonus_check(char **line, t_display *display);
 int		ambient(char **line, int *ambient_count, t_display *display);
 int		light(char **line, int *light_count, t_display *display);
 int		camera(char **line, int *camera_count, t_display *display);
+
+//---------------ADD----------------
+
+int		add_values_pl(char **line, t_display *display);
+int		add_values_cy(char **line, t_display *display);
+int		add_values_sp(char **line, t_display *display);
+
 
 // ------------------------UTILS-----------------------
 
@@ -41,7 +48,7 @@ char	**split_trimed(char *line);
 int		parse_line(char *line, t_count *count, t_display *display);
 int		parse_mandatory_elements(char *identifier, char **line_splited,
 			int **counts, t_display *display);
-int		parse_bonus_objects(char *identifier, char **line_splited);
+int		parse_bonus_objects(char *identifier, char **line_splited, t_display *display);
 int		check_consecutive_commas(char *str);
 char	**split_and_validate_count(char *str);
 int		ratio_check(char *str);

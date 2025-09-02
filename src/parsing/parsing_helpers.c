@@ -94,7 +94,7 @@ int	parse_line(char *line, t_count *count, t_display *display)
 	}
 	result = parse_mandatory_elements(identifier, line_splited, counts, display);
 	if (result == -1)
-		result = parse_bonus_objects(identifier, line_splited);
+		result = parse_bonus_objects(identifier, line_splited, display);
 	free_str(line_splited);
 	return (result);
 }
