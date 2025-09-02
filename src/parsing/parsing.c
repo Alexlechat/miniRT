@@ -6,7 +6,7 @@
 /*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 10:47:35 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/29 12:41:02 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/09/02 10:30:57 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,17 @@ int	parse_file(char *file_name, t_display *display)
 	count.light = 0;
 	count.camera = 0;
 	if (!validate_file(file_name))
-		return (print_error("Error\n", 2));
+		return (0);
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-		return (print_error("Error\n", 2));
+		return (0);
 	if (!process_file_lines(fd, &count, display))
 	{
 		close(fd);
-		return (print_error("Error\n", 2));
+		return (0);
 	}
 	close(fd);
 	if (count.ambient != 1 || count.camera != 1 || count.light != 1)
-		return (print_error("Error\n", 2));
+		return (0);
 	return (1);
 }
