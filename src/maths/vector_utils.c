@@ -6,10 +6,11 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 13:42:16 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/01 14:25:38 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/02 09:00:53 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "math.h"
 #include "utils.h"
 
 // scalar product
