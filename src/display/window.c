@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:41:50 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/01 14:24:28 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/02 11:18:14 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
+#include "miniRT.h"
 #include <stdlib.h>
 
 int			close_window(t_display *display);
@@ -38,6 +39,7 @@ int	close_window(t_display *display)
 	if (display->mlx)
 	{
 		mlx_destroy_display(display->mlx);
+		free_display(display);
 		free(display->mlx);
 	}
 	exit(0);
