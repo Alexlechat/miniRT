@@ -3,44 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 10:47:35 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/02 10:30:57 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:06:05 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
 #include "libft.h"
 #include "miniRT.h"
+#include "vectors.h"
 #include <fcntl.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
-static int	process_file_lines(int fd, t_count *count, t_display *display)
-{
-	char	*line;
-	bool	parse_error;
-
-	parse_error = false;
-	line = get_next_line(fd);
-	while (line)
-	{
-		printf("%s", line);
-		if (parse_line(line, count, display) != 1)
-			parse_error = true;
-		free(line);
-		line = get_next_line(fd);
-	}
-	if (parse_error)
-	{
-		free(line);
-		free_display(display);
-		return (0);
-	}
-	return (1);
-}
+static int	process_file_lines(int fd, t_count *count, t_display *display);
 
 int	parse_file(char *file_name, t_display *display)
 {
@@ -63,5 +42,31 @@ int	parse_file(char *file_name, t_display *display)
 	close(fd);
 	if (count.ambient != 1 || count.camera != 1 || count.light != 1)
 		return (0);
+	calculate_focal(display);
+	camera_offset(display);
+	return (1);
+}
+
+static int	process_file_lines(int fd, t_count *count, t_display *display)
+{
+	char	*line;
+	bool	parse_error;
+
+	parse_error = false;
+	line = get_next_line(fd);
+	while (line)
+	{
+		printf("%s", line);
+		if (parse_line(line, count, display) != 1)
+			parse_error = true;
+		free(line);
+		line = get_next_line(fd);
+	}
+	if (parse_error)
+	{
+		free(line);
+		free_display(display);
+		return (0);
+	}
 	return (1);
 }

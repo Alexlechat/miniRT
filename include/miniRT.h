@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 09:24:20 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/02 10:04:42 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:08:25 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int		add_values_pl(char **line, t_display *display);
 int		add_values_cy(char **line, t_display *display);
 int		add_values_sp(char **line, t_display *display);
 
-
 // ------------------------UTILS-----------------------
 
 int		is_valid_number(char *str);
@@ -48,7 +47,8 @@ char	**split_trimed(char *line);
 int		parse_line(char *line, t_count *count, t_display *display);
 int		parse_mandatory_elements(char *identifier, char **line_splited,
 			int **counts, t_display *display);
-int		parse_bonus_objects(char *identifier, char **line_splited, t_display *display);
+int		parse_bonus_objects(char *identifier, char **line_splited,
+			t_display *display);
 int		check_consecutive_commas(char *str);
 char	**split_and_validate_count(char *str);
 int		ratio_check(char *str);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   add_cy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 09:55:20 by anpicard          #+#    #+#             */
-/*   Updated: 2025/09/02 11:06:34 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:06:40 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
 #include "display.h"
 #include "libft.h"
+#include "miniRT.h"
 
 static int	parse_position(char *pos_str, t_coordinates *position);
 static int	parse_vector(char *vector_str, t_coordinates *vector);
@@ -28,7 +28,8 @@ int	add_values_cy(char **line, t_display *display)
 		return (0);
 	if (display->cylinder && display->nb_cylinders > 0)
 	{
-		ft_memcpy(new_cylinders, display->cylinder, sizeof(t_cylinder) * display->nb_cylinders);
+		ft_memcpy(new_cylinders, display->cylinder, sizeof(t_cylinder)
+			* display->nb_cylinders);
 		free(display->cylinder);
 	}
 	display->cylinder = new_cylinders;
@@ -47,7 +48,7 @@ int	add_values_cy(char **line, t_display *display)
 
 static int	parse_position(char *pos_str, t_coordinates *position)
 {
-	char **parts;
+	char	**parts;
 
 	parts = ft_split(pos_str, ',');
 	if (!parts || !parts[0] || !parts[1] || !parts[2])
@@ -65,7 +66,7 @@ static int	parse_position(char *pos_str, t_coordinates *position)
 
 static int	parse_vector(char *vector_str, t_coordinates *vector)
 {
-	char **parts;
+	char	**parts;
 
 	parts = ft_split(vector_str, ',');
 	if (!parts || !parts[0] || !parts[1] || !parts[2])
@@ -83,7 +84,7 @@ static int	parse_vector(char *vector_str, t_coordinates *vector)
 
 static int	parse_color(char *color_str, t_color *color)
 {
-	char **parts;
+	char	**parts;
 
 	parts = ft_split(color_str, ',');
 	if (!parts || !parts[0] || !parts[1] || !parts[2])
@@ -98,4 +99,3 @@ static int	parse_color(char *color_str, t_color *color)
 	free_str(parts);
 	return (1);
 }
-

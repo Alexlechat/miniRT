@@ -6,12 +6,12 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 12:27:57 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/02 15:04:40 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:09:15 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_H
-# define VECTOR_H
+#ifndef VECTORS_H
+# define VECTORS_H
 
 typedef struct s_vector	t_vector;
 
@@ -22,5 +22,9 @@ t_vector				substract(t_vector u, t_vector v);
 t_vector				multiply(t_vector u, int scalar);
 t_vector				degree_to_vector(int angle);
 t_vector				degree_to_vector_mirror(int angle);
+
+double					convert_degree(double degree);
+void					calculate_focal(t_display *display);
+void					camera_offset(t_display *display);
 
 #endif

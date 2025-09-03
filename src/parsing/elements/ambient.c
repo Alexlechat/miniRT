@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ambient.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:02:14 by anpicard          #+#    #+#             */
-/*   Updated: 2025/08/29 12:41:55 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:06:11 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
 #include "../../../libft/includes/libft.h"
 #include "display.h"
+#include "miniRT.h"
 
 static int	add_values(char **line, t_display *display);
 
@@ -38,7 +38,7 @@ int	ambient(char **line, int *ambient_count, t_display *display)
 
 static int	add_values(char **line, t_display *display)
 {
-	char **color_parts;
+	char	**color_parts;
 
 	display->ambient.brightness = atof(line[1]);
 	color_parts = ft_split(line[2], ',');

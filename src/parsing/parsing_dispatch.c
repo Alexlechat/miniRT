@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_dispatch.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 18:30:00 by anpicard          #+#    #+#             */
-/*   Updated: 2025/09/02 09:54:14 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:05:50 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
 #include "display.h"
 #include "libft.h"
+#include "miniRT.h"
 #include <stdlib.h>
 
 int	parse_mandatory_elements(char *identifier, char **line_splited,
@@ -27,7 +27,8 @@ int	parse_mandatory_elements(char *identifier, char **line_splited,
 	return (-1);
 }
 
-int	parse_bonus_objects(char *identifier, char **line_splited, t_display *display)
+int	parse_bonus_objects(char *identifier, char **line_splited,
+		t_display *display)
 {
 	if (ft_strncmp(identifier, "sp", 2) == 0)
 		return (bonus_check(line_splited, display));

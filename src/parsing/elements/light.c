@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:02:22 by anpicard          #+#    #+#             */
-/*   Updated: 2025/08/29 12:42:29 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:06:27 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
-#include "display.h"
 #include "../../../libft/includes/libft.h"
+#include "display.h"
+#include "miniRT.h"
 
 static int	parse_position(char *pos_str, t_coordinates *position);
 static int	parse_color(char *color_str, t_color *color);
@@ -42,7 +42,7 @@ int	light(char **line, int *light_count, t_display *display)
 
 static int	parse_position(char *pos_str, t_coordinates *position)
 {
-	char **parts;
+	char	**parts;
 
 	parts = ft_split(pos_str, ',');
 	if (!parts || !parts[0] || !parts[1] || !parts[2])
@@ -60,7 +60,7 @@ static int	parse_position(char *pos_str, t_coordinates *position)
 
 static int	parse_color(char *color_str, t_color *color)
 {
-	char **parts;
+	char	**parts;
 
 	parts = ft_split(color_str, ',');
 	if (!parts || !parts[0] || !parts[1] || !parts[2])

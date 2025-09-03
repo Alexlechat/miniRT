@@ -6,7 +6,7 @@
 #    By: allefran <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/05 19:11:24 by anpicard          #+#    #+#              #
-#    Updated: 2025/08/08 13:09:00 by allefran         ###   ########.fr        #
+#    Updated: 2025/09/03 13:49:26 by allefran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,6 @@ MLX_FLAGS   := -I/usr/include -I$(MLX_DIR)
 MLX_LINKS   := -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 
 INCS        := -I$(INC_DIR) -I$(LIBFT_DIR)/includes
-
 SRCS        := $(shell find $(SRC_DIR) -name "*.c")
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
@@ -39,7 +38,7 @@ OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(MLX) $(OBJS)
+$(NAME): $(LIBFT) $(MLX) $(OBJS) $()
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_LINKS) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c

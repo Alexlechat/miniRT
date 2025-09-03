@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   add_sp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 09:55:43 by anpicard          #+#    #+#             */
-/*   Updated: 2025/09/02 10:19:34 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:06:33 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
 #include "display.h"
 #include "libft.h"
+#include "miniRT.h"
 
 static int	parse_position(char *pos_str, t_coordinates *position);
 static int	parse_color(char *color_str, t_color *color);
@@ -27,7 +27,8 @@ int	add_values_sp(char **line, t_display *display)
 		return (0);
 	if (display->sphere && display->nb_spheres > 0)
 	{
-		ft_memcpy(new_spheres, display->sphere, sizeof(t_sphere) * display->nb_spheres);
+		ft_memcpy(new_spheres, display->sphere, sizeof(t_sphere)
+			* display->nb_spheres);
 		free(display->sphere);
 	}
 	display->sphere = new_spheres;
@@ -43,7 +44,7 @@ int	add_values_sp(char **line, t_display *display)
 
 static int	parse_position(char *pos_str, t_coordinates *position)
 {
-	char **parts;
+	char	**parts;
 
 	parts = ft_split(pos_str, ',');
 	if (!parts || !parts[0] || !parts[1] || !parts[2])
@@ -61,7 +62,7 @@ static int	parse_position(char *pos_str, t_coordinates *position)
 
 static int	parse_color(char *color_str, t_color *color)
 {
-	char **parts;
+	char	**parts;
 
 	parts = ft_split(color_str, ',');
 	if (!parts || !parts[0] || !parts[1] || !parts[2])

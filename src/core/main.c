@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 14:26:00 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/02 11:11:17 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:06:55 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
-#include "miniRT.h"
 #include "libft.h"
+#include "miniRT.h"
 
 int	main(int argc, char **argv)
 {

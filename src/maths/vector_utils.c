@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 13:42:16 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/02 15:27:17 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:07:58 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	dot(t_vector u, t_vector v)
 t_vector	normalize(t_vector u)
 {
 	t_vector	result;
-	double			norm;
+	double		norm;
 
 	norm = sqrt(u.x * u.x + u.y * u.y + u.z * u.z);
 	if (norm > 0)
