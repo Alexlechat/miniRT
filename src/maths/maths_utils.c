@@ -6,11 +6,12 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 09:33:28 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/03 14:07:33 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:43:16 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
+#include "vectors.h"
 #include <math.h>
 
 static void	reset_camera(t_display *display);
@@ -38,4 +39,29 @@ static void	reset_camera(t_display *display)
 	display->camera.position.x = 0;
 	display->camera.position.y = 0;
 	display->camera.position.z = 0;
+}
+
+void	position_offset(t_display *display)
+{
+	int	i;
+
+	display->light.position = add(display->light.position, display->vector_offset);
+	i = 0;
+	while (i < display->nb_planes)
+	{
+		display->plane[i].position = add(display->plane[i].position, display->vector_offset);
+		i++;
+	}
+	i = 0;
+	while (i < display->nb_spheres)
+	{
+		display->sphere[i].position = add(display->sphere[i].position, display->vector_offset);
+		i++;
+	}
+	i = 0;
+	while (i < display->nb_cylinders)
+	{
+		display->cylinder[i].position = add(display->cylinder[i].position, display->vector_offset);
+		i++;
+	}
 }

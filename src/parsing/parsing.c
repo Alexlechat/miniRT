@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 10:47:35 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/03 14:06:05 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:35:39 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	parse_file(char *file_name, t_display *display)
 		return (0);
 	calculate_focal(display);
 	camera_offset(display);
+	position_offset(display);
 	return (1);
 }
 

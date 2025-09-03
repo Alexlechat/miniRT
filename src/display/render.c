@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 09:14:35 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/03 14:07:15 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/03 15:04:17 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,3 +59,5 @@ int	draw_position(t_display *display, int x, int y, int color)
 		color);
 	return (0);
 }
+
+

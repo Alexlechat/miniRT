@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 09:55:43 by anpicard          #+#    #+#             */
-/*   Updated: 2025/09/03 14:06:33 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:25:12 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "miniRT.h"
 
-static int	parse_position(char *pos_str, t_coordinates *position);
+static int	parse_position(char *pos_str, t_vector *position);
 static int	parse_color(char *color_str, t_color *color);
 
 int	add_values_sp(char **line, t_display *display)
@@ -42,7 +42,7 @@ int	add_values_sp(char **line, t_display *display)
 	return (1);
 }
 
-static int	parse_position(char *pos_str, t_coordinates *position)
+static int	parse_position(char *pos_str, t_vector *position)
 {
 	char	**parts;
 

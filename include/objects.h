@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 09:54:35 by allefran          #+#    #+#             */
-/*   Updated: 2025/08/07 10:34:15 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:25:12 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ typedef struct s_sphere
 {
 	int				diameter;
 	t_color			color;
-	t_coordinates	position;
+	t_vector	position;
 }					t_sphere;
 
 typedef struct s_plane
 {
 	t_color			color;
-	t_coordinates	vector;
-	t_coordinates	position;
+	t_vector	vector;
+	t_vector	position;
 }					t_plane;
 
 typedef struct s_cylinder
@@ -34,8 +34,8 @@ typedef struct s_cylinder
 	int				diameter;
 	int				height;
 	t_color			color;
-	t_coordinates	position;
-	t_coordinates	vector;
+	t_vector	position;
+	t_vector	vector;
 }					t_cylinder;
 
 #endif

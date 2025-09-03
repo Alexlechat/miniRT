@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 12:27:57 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/03 14:09:15 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:32:10 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ t_vector				degree_to_vector_mirror(int angle);
 double					convert_degree(double degree);
 void					calculate_focal(t_display *display);
 void					camera_offset(t_display *display);
+void					position_offset(t_display *display);
 
 #endif

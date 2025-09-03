@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 09:38:09 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/03 14:24:47 by allefran         ###   ########.fr       */
+/*   Created: 2025/09/03 15:04:10 by allefran          #+#    #+#             */
+/*   Updated: 2025/09/03 15:04:22 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
-
-typedef struct s_color
+int	convert_color(int r, int g, int b)
 {
-	int		r;
-	int		g;
-	int		b;
-}			t_color;
+	int	hex;
 
-typedef struct s_vector
-{
-	double	x;
-	double	y;
-	double	z;
-}			t_vector;
-
-#endif
+	hex = 0;
+	hex = r << 16;
+	hex = hex | g << 8;
+	hex = hex | b;
+	return (hex);
+}

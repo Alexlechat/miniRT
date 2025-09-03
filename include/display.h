@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:57:14 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/03 14:00:58 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:29:06 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ typedef struct s_display
 	void		*window;
 	int			height;
 	int			width;
-	int			nb_spheres;
 	int			nb_planes;
+	int			nb_spheres;
 	int			nb_cylinders;
 	double		focal_length;
 	t_vector	vector_offset;
