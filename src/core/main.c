@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 14:26:00 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/03 14:06:55 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/22 13:27:11 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	if (!parse_file(argv[1], &display))
 		return (print_error("Error\n", 2));
 	init_window(&display);
-	mlx_loop_hook(display.mlx, &render, &display);
+	mlx_loop_hook(display.mlx, &render_scene, &display);
 	mlx_hook(display.window, EVENT_CLOSE, 0, close_window, &display);
 	mlx_key_hook(display.window, key_press, &display);
 	mlx_loop(display.mlx);
