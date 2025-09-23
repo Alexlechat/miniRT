@@ -1,41 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   objects.h                                          :+:      :+:    :+:   */
+/*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 09:54:35 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/23 14:42:03 by allefran         ###   ########.fr       */
+/*   Created: 2025/09/23 14:50:31 by allefran          #+#    #+#             */
+/*   Updated: 2025/09/23 14:52:55 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OBJECTS_H
-# define OBJECTS_H
+#include "display.h"
 
-# include "utils.h"
-
-typedef struct s_sphere
+int sphere_intersection(t_sphere sphere, t_ray ray, t_hit hit)
 {
-	int				diameter;
-	t_color			color;
-	t_vector		position;
-}					t_sphere;
-
-typedef struct s_plane
-{
-	t_color			color;
-	t_vector		vector;
-	t_vector		position;
-}					t_plane;
-
-typedef struct s_cylinder
-{
-	int				diameter;
-	int				height;
-	t_color			color;
-	t_vector		position;
-	t_vector		vector;
-}					t_cylinder;
-
-#endif
+    
+    return (0);
+}

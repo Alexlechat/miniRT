@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:57:14 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/22 13:27:26 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/23 13:34:50 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,6 @@ int				render_scene(t_display *display);
 int				draw_line(t_display *display, t_vector vector, int length,
 					int color);
 int				draw_position(t_display *display, int x, int y, int color);
+int				create_ray(t_display *display, int pixel_x, int pixel_y);
+
 #endif

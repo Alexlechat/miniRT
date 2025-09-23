@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 09:14:35 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/22 14:52:26 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/09/23 12:34:31 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@ int	draw_camera(t_display *display);
 
 int	render_scene(t_display *display)
 {
-	int	x;
-	int	y;
+	int			pixel_x;
+	int			pixel_y;
 
-	y = 0;
-	while (y <= display->height)
+	pixel_y = 0;
+	while (pixel_y <= display->height)
 	{
-		x = 0;
-		while (x <= display->width)
+		pixel_x = 0;
+		while (pixel_x <= display->width)
 		{
-			//create_ray(display);
-			mlx_pixel_put(display->mlx, display->window, x, y, WHITE);
-			x++;
+			create_ray(display, pixel_x, pixel_y);
+			//mlx_pixel_put(display->mlx, display->window, pixel_x, pixel_y, WHITE);
+			pixel_x++;
 		}
-		y++;
+		pixel_y++;
 	}
 	return (0);
 }
