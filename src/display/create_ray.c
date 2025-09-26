@@ -6,14 +6,15 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 11:08:36 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/26 08:30:19 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/26 09:20:19 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "display.h"
-#include "utils.h"
 #include <stdio.h>
+#include "libft.h"
+#include "utils.h"
+#include "display.h"
 
 int test_ray(t_display *display, t_ray ray, int pixel_x, int pixel_y);
 int cast_ray(t_display *display, t_ray ray, int pixel_x, int pixel_y);
@@ -48,6 +49,8 @@ int cast_ray(t_display *display, t_ray ray, int pixel_x, int pixel_y)
     t_hit   hit;
     double  distance;
 
+    distance = -1;
+    ft_memset(&hit, 0, sizeof(hit));
     i = 0;
     while (i < display->nb_spheres)
     {
