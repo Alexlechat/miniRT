@@ -6,14 +6,15 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 11:08:36 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/26 08:30:19 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/26 12:05:30 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "display.h"
-#include "utils.h"
 #include <stdio.h>
+#include "libft.h"
+#include "utils.h"
+#include "display.h"
 
 int test_ray(t_display *display, t_ray ray, int pixel_x, int pixel_y);
 int cast_ray(t_display *display, t_ray ray, int pixel_x, int pixel_y);
@@ -45,15 +46,23 @@ int create_ray(t_display *display, int pixel_x, int pixel_y)
 int cast_ray(t_display *display, t_ray ray, int pixel_x, int pixel_y)
 {
     int     i;
-    t_hit   hit;
-    double  distance;
-
+    t_hit   last_hit;
+    t_hit   closest_hit;
+    t_color color;
+    
     i = 0;
+    closest_hit.hit = false;
     while (i < display->nb_spheres)
     {
-        distance = sphere_intersection(display, &display->sphere[i], &ray, &hit);
-        if (distance > 0)
-            mlx_pixel_put(display->mlx, display->window, pixel_x, pixel_y, convert_color(display->sphere[i].color));
+        last_hit.hit = false;
+        sphere_intersection(display, &display->sphere[i], &ray, &last_hit);
+        if (last_hit.hit && closest_hit.hit)
+        {
+            if (last_hit.distance < closest_hit.distance)
+                closest_hit = last_hit;
+        }
+        else if (last_hit.hit)
+            closest_hit = last_hit;
         i++;
     }
     i = 0;
@@ -66,5 +75,10 @@ int cast_ray(t_display *display, t_ray ray, int pixel_x, int pixel_y)
     {
         i++;
     }
+    if (closest_hit.hit)
+        color = closest_hit.color;
+    else
+        color = create_color(0, 0, 0);
+    mlx_pixel_put(display->mlx, display->window, pixel_x, pixel_y, convert_color(color));
     return (0);
 }

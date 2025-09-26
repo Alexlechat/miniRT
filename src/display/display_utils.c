@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:04:10 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/25 15:54:46 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/26 11:36:10 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,14 @@ int	convert_color(t_color color)
 	hex = hex | color.g << 8;
 	hex = hex | color.b;
 	return (hex);
+}
+
+t_color	create_color(int r, int g, int b)
+{
+	t_color	new_color;
+
+	new_color.r = r;
+	new_color.g = g;
+	new_color.b = b;
+	return (new_color);
 }

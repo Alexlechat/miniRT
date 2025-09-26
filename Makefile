@@ -6,7 +6,7 @@
 #    By: allefran <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/05 19:11:24 by anpicard          #+#    #+#              #
-#    Updated: 2025/09/03 13:49:26 by allefran         ###   ########.fr        #
+#    Updated: 2025/09/26 11:45:07 by allefran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,11 +34,13 @@ INCS        := -I$(INC_DIR) -I$(LIBFT_DIR)/includes
 SRCS        := $(shell find $(SRC_DIR) -name "*.c")
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
+LST_INCS	:=	$(shell find $(inc_dir) -name "*.h")
+
 # ==== RULES ====
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(MLX) $(OBJS) $()
+$(NAME): $(LIBFT) $(MLX) $(OBJS) $(LST_INCS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_LINKS) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c

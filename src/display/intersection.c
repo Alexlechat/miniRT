@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:50:31 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/26 08:21:59 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/26 12:09:38 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ double sphere_intersection(t_display *display, t_sphere *sphere, t_ray *ray, t_h
     double  delta;
     double  x2;
 
-    (void)hit;
-
     radius = sphere->diameter / 2;
 
     a = dot(ray->direction, ray->direction);
@@ -51,9 +49,15 @@ double sphere_intersection(t_display *display, t_sphere *sphere, t_ray *ray, t_h
     {
         x2 = (-b - sqrt(delta)) / (2 * a);
         if (x2 >= 0)
+        {
+            hit->hit = true;
+            hit->coordinate = ray->direction;
+            hit->distance = x2;
+            hit->color = sphere->color;
             return (x2);
+        }
+            //return (x2);
     }
-    
     return (0);
 }
 
