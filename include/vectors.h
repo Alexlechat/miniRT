@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 12:27:57 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/03 14:32:10 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/25 15:33:36 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 typedef struct s_vector	t_vector;
 
-int						dot(t_vector u, t_vector v);
+double	                dot(t_vector u, t_vector v);
 t_vector				normalize(t_vector u);
 t_vector				add(t_vector u, t_vector v);
 t_vector				substract(t_vector u, t_vector v);

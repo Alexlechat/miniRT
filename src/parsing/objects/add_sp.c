@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 09:55:43 by anpicard          #+#    #+#             */
-/*   Updated: 2025/09/03 14:25:12 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/25 13:35:22 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	add_values_sp(char **line, t_display *display)
 	current_index = display->nb_spheres;
 	if (!parse_position(line[1], &display->sphere[current_index].position))
 		return (0);
-	display->sphere[current_index].diameter = ft_atof(line[2]);
+	display->sphere[current_index].diameter = ft_atoi(line[2]);
 	if (!parse_color(line[3], &display->sphere[current_index].color))
 		return (0);
 	display->nb_spheres++;

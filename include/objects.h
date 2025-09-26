@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 09:54:35 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/23 14:42:03 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/25 11:22:46 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 typedef struct s_sphere
 {
-	int				diameter;
+	double			diameter;
 	t_color			color;
 	t_vector		position;
 }					t_sphere;

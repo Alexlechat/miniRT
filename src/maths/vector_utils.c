@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 13:42:16 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/03 14:07:58 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/25 15:34:18 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "utils.h"
 
 // scalar product
-int	dot(t_vector u, t_vector v)
+double	dot(t_vector u, t_vector v)
 {
-	int	scalar;
+	double	scalar;
 
 	scalar = u.x * v.x + u.y * v.y + u.z * v.z;
 	return (scalar);

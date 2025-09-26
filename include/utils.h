@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 09:38:09 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/23 14:45:22 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/25 15:54:55 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ typedef struct s_hit
 	int			distance;
 	int			color;
 }			t_hit;
+
+int	convert_color(t_color color);
 
 #endif

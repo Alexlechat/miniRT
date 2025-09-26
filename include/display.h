@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:57:14 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/23 13:34:50 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/25 13:15:17 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define BLUE 0x0000FF
 # define WHITE 0xFFFFFF
 # define YELLOW 0xe8eb34
+# define ORANGE 0xff8000
 
 typedef struct s_display
 {
@@ -59,5 +60,6 @@ int				draw_line(t_display *display, t_vector vector, int length,
 					int color);
 int				draw_position(t_display *display, int x, int y, int color);
 int				create_ray(t_display *display, int pixel_x, int pixel_y);
+double 			sphere_intersection(t_display *display, t_sphere *sphere, t_ray *ray, t_hit *hit);
 
 #endif
