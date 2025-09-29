@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 13:42:16 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/25 15:34:18 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/29 10:54:40 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_vector	substract(t_vector u, t_vector v)
 	return (result);
 }
 
-t_vector	multiply(t_vector u, int scalar)
+t_vector	multiply(t_vector u, double scalar)
 {
 	t_vector	result;
 

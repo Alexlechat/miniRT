@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 12:27:57 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/25 15:33:36 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/29 10:54:57 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ double	                dot(t_vector u, t_vector v);
 t_vector				normalize(t_vector u);
 t_vector				add(t_vector u, t_vector v);
 t_vector				substract(t_vector u, t_vector v);
-t_vector				multiply(t_vector u, int scalar);
+t_vector				multiply(t_vector u, double scalar);
 t_vector				degree_to_vector(int angle);
 t_vector				degree_to_vector_mirror(int angle);
 

@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 11:08:36 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/26 12:05:30 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/29 14:48:45 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include "libft.h"
 #include "utils.h"
 #include "display.h"
+#include "vectors.h"
 
-int test_ray(t_display *display, t_ray ray, int pixel_x, int pixel_y);
-int cast_ray(t_display *display, t_ray ray, int pixel_x, int pixel_y);
+t_hit find_closest_hit(t_display *display, t_ray ray);
 
 int create_ray(t_display *display, int pixel_x, int pixel_y)
 {
@@ -27,6 +27,9 @@ int create_ray(t_display *display, int pixel_x, int pixel_y)
     double  viewport_width;
     double  ratio;
     t_ray   ray;
+    t_hit   hit;
+    bool    is_lit;
+    double  normalized_angle;
 
     ratio = (double)display->width / (double)display->height;
     norm_x = ((2 * pixel_x / (double)display->width) - 1);
@@ -35,20 +38,35 @@ int create_ray(t_display *display, int pixel_x, int pixel_y)
     viewport_height = 2.0 * tan(((display->camera.fov * M_PI) / 180) / 2.0);
     viewport_width = ratio * viewport_height;
     
+    hit.color.color = 0;
     ray.origin = display->camera.position;
     ray.direction.x = norm_x * (viewport_width / 2);
     ray.direction.y = norm_y * (viewport_height / 2);
     ray.direction.z = 1;
-    cast_ray(display, ray, pixel_x, pixel_y);
+    hit = find_closest_hit(display, ray);
+    if (hit.hit == true)
+    {
+        is_lit = reflection(display, hit.coordinate);
+        if (is_lit == true)
+        {
+            if (hit.angle_deg < 90)
+            {
+                normalized_angle = hit.angle_deg / 90;
+                hit.color.r *= normalized_angle;
+                hit.color.g *= normalized_angle;
+                hit.color.b *= normalized_angle;
+            }
+        }
+    }   
+    mlx_pixel_put(display->mlx, display->window, pixel_x, pixel_y, hit.color.color);
     return (0);
 }
 
-int cast_ray(t_display *display, t_ray ray, int pixel_x, int pixel_y)
+t_hit find_closest_hit(t_display *display, t_ray ray)
 {
     int     i;
     t_hit   last_hit;
     t_hit   closest_hit;
-    t_color color;
     
     i = 0;
     closest_hit.hit = false;
@@ -75,10 +93,14 @@ int cast_ray(t_display *display, t_ray ray, int pixel_x, int pixel_y)
     {
         i++;
     }
-    if (closest_hit.hit)
-        color = closest_hit.color;
-    else
-        color = create_color(0, 0, 0);
-    mlx_pixel_put(display->mlx, display->window, pixel_x, pixel_y, convert_color(color));
-    return (0);
+    if (closest_hit.hit == false)
+    {
+        closest_hit.color = create_color(0, 0, 0);
+    }
+    
+    // if (closest_hit.hit)
+    //     color = closest_hit.color;
+    // else
+    //     color = create_color(0, 0, 0);
+    return (closest_hit);
 }
