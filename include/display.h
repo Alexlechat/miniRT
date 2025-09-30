@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:57:14 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/29 13:30:18 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/30 09:41:38 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int				draw_position(t_display *display, int x, int y, int color);
 int				create_ray(t_display *display, int pixel_x, int pixel_y);
 t_hit 			find_closest_hit(t_display *display, t_ray ray);
 double 			sphere_intersection(t_display *display, t_sphere *sphere, t_ray *ray, t_hit *hit);
-bool    		reflection(t_display *display, t_vector origin);
+bool    		reflection(t_display *display, t_vector origin, t_hit *hit_object);
 t_vector    	sphere_normal(t_sphere *sphere, t_vector *coordinate);
 
 #endif

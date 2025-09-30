@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 09:38:09 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/29 14:17:36 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/30 08:57:27 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define UTILS_H
 
 #include <stdbool.h>
+
+typedef struct s_sphere t_sphere;
 
 typedef union u_color
 {

@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 11:08:36 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/29 14:48:45 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/30 10:53:29 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int create_ray(t_display *display, int pixel_x, int pixel_y)
     viewport_height = 2.0 * tan(((display->camera.fov * M_PI) / 180) / 2.0);
     viewport_width = ratio * viewport_height;
     
-    hit.color.color = 0;
+    hit.hit = false;
+    hit.color.color = display->ambient.color.color;
     ray.origin = display->camera.position;
     ray.direction.x = norm_x * (viewport_width / 2);
     ray.direction.y = norm_y * (viewport_height / 2);
@@ -46,16 +47,20 @@ int create_ray(t_display *display, int pixel_x, int pixel_y)
     hit = find_closest_hit(display, ray);
     if (hit.hit == true)
     {
-        is_lit = reflection(display, hit.coordinate);
+        is_lit = reflection(display, hit.coordinate, &hit);
         if (is_lit == true)
         {
-            if (hit.angle_deg < 90)
-            {
-                normalized_angle = hit.angle_deg / 90;
-                hit.color.r *= normalized_angle;
-                hit.color.g *= normalized_angle;
-                hit.color.b *= normalized_angle;
-            }
+            normalized_angle = 1.0 - (hit.angle_deg / 180);
+            hit.color.r *= normalized_angle;
+            hit.color.g *= normalized_angle;
+            hit.color.b *= normalized_angle;
+        }
+        else
+        {
+            normalized_angle = 0.2 * (1.0 - (hit.angle_deg / 180.0));
+            hit.color.r *= normalized_angle;
+            hit.color.g *= normalized_angle;
+            hit.color.b *= normalized_angle;
         }
     }   
     mlx_pixel_put(display->mlx, display->window, pixel_x, pixel_y, hit.color.color);
@@ -83,6 +88,7 @@ t_hit find_closest_hit(t_display *display, t_ray ray)
             closest_hit = last_hit;
         i++;
     }
+    
     i = 0;
     while (i < display->nb_planes)
     {
@@ -95,7 +101,7 @@ t_hit find_closest_hit(t_display *display, t_ray ray)
     }
     if (closest_hit.hit == false)
     {
-        closest_hit.color = create_color(0, 0, 0);
+        closest_hit.color.color = 0;
     }
     
     // if (closest_hit.hit)
