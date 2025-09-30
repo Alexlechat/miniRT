@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 09:55:20 by anpicard          #+#    #+#             */
-/*   Updated: 2025/09/03 14:25:12 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/30 13:29:38 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	add_values_pl(char **line, t_display *display)
 	current_index = display->nb_planes;
 	if (!parse_position(line[1], &display->plane[current_index].position))
 		return (0);
-	if (!parse_vector(line[2], &display->plane[current_index].vector))
+	if (!parse_vector(line[2], &display->plane[current_index].orientation))
 		return (0);
 	if (!parse_color(line[3], &display->plane[current_index].color))
 		return (0);

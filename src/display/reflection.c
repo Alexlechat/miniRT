@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:52:40 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/30 10:39:17 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/30 14:57:39 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "vectors.h"
 #include <math.h>
 
+static double l(t_vector v);
 t_vector    calculate_light_ray(t_vector origin, t_light *light);
 
 bool    reflection(t_display *display, t_vector origin, t_hit *hit_object)
@@ -34,7 +35,7 @@ bool    reflection(t_display *display, t_vector origin, t_hit *hit_object)
     if (angle > 1)
         angle = 1;
     hit_object->angle_deg = acos(angle) * 180.0 / M_PI;
-    return (!light_hit.hit);
+    return (light_hit.distance > l(substract(display->light.position, origin)));
 }
 
 t_vector    calculate_light_ray(t_vector origin, t_light *light)
@@ -46,3 +47,7 @@ t_vector    calculate_light_ray(t_vector origin, t_light *light)
     return (light_ray);
 }
 
+static double l(t_vector v)
+{
+    return (sqrt(v.x * v.x + v.y * v.y + v.z * v.z));
+}

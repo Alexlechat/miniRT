@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:50:31 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/30 10:33:03 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/30 14:59:55 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,46 @@ double sphere_intersection(t_display *display, t_sphere *sphere, t_ray *ray, t_h
     return (0);
 }
 
-// int plane_intersection(t_plane plane, t_ray ray, t_hit hit)
-// {
-//     // a = o2 + t3 * v3                  droite
-//     // a = o1 + t1 * v1 + t2 * v2        plan
+double  plane_intersection(t_plane *plane, t_ray *ray, t_hit *hit)
+{
+    // a = o2 + t3 * v3                  droite
+    // a = o1 + t1 * v1 + t2 * v2        plan
     
-//     // o1 + t1 * v1 + t2 * v2 = o2 + t3 * v3    trouver t3 distance
+    // o1 + t1 * v1 + t2 * v2 = o2 + t3 * v3    trouver t3 distance
 
-//     // (o1 + t1 * v1 + t2 * v2  - o2) / v3 = t3
-//     // 
+    // (o1 + t1 * v1 + t2 * v2  - o2) / v3 = t3
     
-//     return (0);
-// }
+
+    // n . (P - P0) = 0                 plan
+    // P(t) = 0rigin + t . direction     droite
+
+    // n . (O + t.d - P0) = 0 
+
+    // t = n · (P₀ - O) / (n · d)
+
+    double      t;
+    double      denom;
+    t_vector    op;
+
+    denom = dot(plane->orientation, ray->direction);
+    
+    op = substract(plane->position, ray->origin);
+    
+    t = dot(plane->orientation, op) / denom;
+    
+    if (t > 0)
+    {
+        hit->hit = true;
+        hit->coordinate = multiply(ray->direction, t);
+        hit->distance = t;
+        hit->color = plane->color;
+        hit->normal.x = 0;
+        hit->normal.y = 0;
+        hit->normal.z = -1;
+        return (t);
+    }
+    return (0);
+}
 
 // int cylinder_intersection(t_cylinder cylinder, t_ray ray, t_hit hit)
 // {

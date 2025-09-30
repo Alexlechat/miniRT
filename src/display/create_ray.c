@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 11:08:36 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/30 10:53:29 by allefran         ###   ########.fr       */
+/*   Updated: 2025/09/30 14:42:33 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,18 @@ t_hit find_closest_hit(t_display *display, t_ray ray)
             closest_hit = last_hit;
         i++;
     }
-    
     i = 0;
     while (i < display->nb_planes)
     {
+        last_hit.hit = false;
+        plane_intersection(&display->plane[i], &ray, &last_hit);
+        if (last_hit.hit && closest_hit.hit)
+        {
+            if (last_hit.distance < closest_hit.distance)
+                closest_hit = last_hit;
+        }
+        else if (last_hit.hit)
+            closest_hit = last_hit;
         i++;
     }
     i = 0;
@@ -103,10 +111,5 @@ t_hit find_closest_hit(t_display *display, t_ray ray)
     {
         closest_hit.color.color = 0;
     }
-    
-    // if (closest_hit.hit)
-    //     color = closest_hit.color;
-    // else
-    //     color = create_color(0, 0, 0);
     return (closest_hit);
 }
