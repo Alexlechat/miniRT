@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 11:08:36 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/30 14:42:33 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/02 15:15:29 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,18 @@ int create_ray(t_display *display, int pixel_x, int pixel_y)
     if (hit.hit == true)
     {
         is_lit = reflection(display, hit.coordinate, &hit);
-        if (is_lit == true)
+        if (is_lit == true && hit.angle_deg <= 90)
         {
-            normalized_angle = 1.0 - (hit.angle_deg / 180);
+            normalized_angle = 1.0 - (hit.angle_deg / 90);
             hit.color.r *= normalized_angle;
             hit.color.g *= normalized_angle;
             hit.color.b *= normalized_angle;
         }
         else
         {
-            normalized_angle = 0.2 * (1.0 - (hit.angle_deg / 180.0));
-            hit.color.r *= normalized_angle;
-            hit.color.g *= normalized_angle;
-            hit.color.b *= normalized_angle;
+            hit.color.r = 0;
+            hit.color.g = 0;
+            hit.color.b = 0;
         }
     }   
     mlx_pixel_put(display->mlx, display->window, pixel_x, pixel_y, hit.color.color);
@@ -74,6 +73,7 @@ t_hit find_closest_hit(t_display *display, t_ray ray)
     t_hit   closest_hit;
     
     i = 0;
+    ft_memset(&closest_hit, 0, sizeof(t_hit));
     closest_hit.hit = false;
     while (i < display->nb_spheres)
     {
@@ -92,7 +92,7 @@ t_hit find_closest_hit(t_display *display, t_ray ray)
     while (i < display->nb_planes)
     {
         last_hit.hit = false;
-        plane_intersection(&display->plane[i], &ray, &last_hit);
+        plane_intersection(display, &display->plane[i], &ray, &last_hit);
         if (last_hit.hit && closest_hit.hit)
         {
             if (last_hit.distance < closest_hit.distance)

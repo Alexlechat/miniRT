@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 09:38:09 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/30 08:57:27 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/02 11:42:11 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_hit
 	t_color		color;
 	t_vector	normal;
 	double		angle_deg;
-}			t_hit;
+}	t_hit;
 
 int		convert_color(t_color color);
 t_color	create_color(int r, int g, int b);

@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 09:14:35 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/24 09:51:21 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/02 14:19:48 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	render_scene(t_display *display)
 		while (pixel_x < display->width)
 		{
 			create_ray(display, pixel_x, pixel_y);
-			//mlx_pixel_put(display->mlx, display->window, pixel_x, pixel_y, WHITE);
 			pixel_x++;
 		}
 		pixel_y++;
