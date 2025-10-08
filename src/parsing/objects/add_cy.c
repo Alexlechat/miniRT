@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 09:55:20 by anpicard          #+#    #+#             */
-/*   Updated: 2025/09/03 14:25:12 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/07 10:33:44 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "miniRT.h"
 
 static int	parse_position(char *pos_str, t_vector *position);
-static int	parse_vector(char *vector_str, t_vector *vector);
+static double	parse_vector(char *vector_str, t_vector *vector);
 static int	parse_color(char *color_str, t_color *color);
 
 int	add_values_cy(char **line, t_display *display)
@@ -36,9 +36,9 @@ int	add_values_cy(char **line, t_display *display)
 	current_index = display->nb_cylinders;
 	if (!parse_position(line[1], &display->cylinder[current_index].position))
 		return (0);
-	if (!parse_vector(line[2], &display->cylinder[current_index].vector))
+	if (!parse_vector(line[2], &display->cylinder[current_index].orientation))
 		return (0);
-	display->cylinder[current_index].diameter = ft_atof(line[3]);
+	display->cylinder[current_index].radius = ft_atoi(line[3]) / 2;
 	display->cylinder[current_index].height = ft_atof(line[4]);
 	if (!parse_color(line[5], &display->cylinder[current_index].color))
 		return (0);
@@ -64,7 +64,7 @@ static int	parse_position(char *pos_str, t_vector *position)
 	return (1);
 }
 
-static int	parse_vector(char *vector_str, t_vector *vector)
+static double	parse_vector(char *vector_str, t_vector *vector)
 {
 	char	**parts;
 

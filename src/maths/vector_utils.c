@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 13:42:16 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/29 10:54:40 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/06 13:27:01 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ double	dot(t_vector u, t_vector v)
 
 	scalar = u.x * v.x + u.y * v.y + u.z * v.z;
 	return (scalar);
+}
+
+t_vector	cross_product(t_vector u, t_vector v)
+{
+	t_vector	result;
+
+	result.x = (u.y * v.z) - (u.z * v.y);
+	result.y = (u.z * v.x) - (u.x * v.z);
+	result.z = (u.x * v.y) - (u.y * v.x);
+	return (result);
 }
 
 t_vector	normalize(t_vector u)

@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:50:31 by allefran          #+#    #+#             */
-/*   Updated: 2025/10/02 15:01:34 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/07 12:09:27 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,6 @@
 
 double sphere_intersection(t_display *display, t_sphere *sphere, t_ray *ray, t_hit *hit)
 {
-    // a = o1 + t1 * v1                         droite
-    // r = || a - o2||                          sphere
-    // r * r = || a - o2|| * || a - o2||
-
-    // o1 + t1 * v1 = (a - o2).(a - o2)
-
-    // a = o1 + t1 * v1
-    // r * r = (a - o2).(a - o2)
-
     double  a;
     double  b;
     double  c;
@@ -71,21 +62,6 @@ double sphere_intersection(t_display *display, t_sphere *sphere, t_ray *ray, t_h
 
 double  plane_intersection(t_display *display, t_plane *plane, t_ray *ray, t_hit *hit)
 {
-    // a = o2 + t3 * v3                  droite
-    // a = o1 + t1 * v1 + t2 * v2        plan
-    
-    // o1 + t1 * v1 + t2 * v2 = o2 + t3 * v3    trouver t3 distance
-
-    // (o1 + t1 * v1 + t2 * v2  - o2) / v3 = t3
-    
-
-    // n . (P - P0) = 0                 plan
-    // P(t) = 0rigin + t . direction     droite
-
-    // n . (O + t.d - P0) = 0 
-
-    // t = n · (P₀ - O) / (n · d)
-
     double      t;
     double      denom;
     double      angle_deg;
@@ -120,8 +96,19 @@ double  plane_intersection(t_display *display, t_plane *plane, t_ray *ray, t_hit
     return (0);
 }
 
-// int cylinder_intersection(t_cylinder cylinder, t_ray ray, t_hit hit)
+// int cylinder_intersection(t_cylinder *cylinder, t_ray *ray, t_hit *hit)
 // {
+//     t_vector    u;
+//     t_vector    v;
+//     double      a;
+//     double      b;
+//     double      c;
+
+//     u = cross_product(ray->direction, cylinder->orientation);
+//     v = substract(cylinder->position, ray->direction);
+//     v = cross_product(v, cylinder->orientation);
+
+//     a = dot(u, u);
     
 //     return (0);
 // }
