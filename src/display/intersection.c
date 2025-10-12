@@ -29,33 +29,30 @@ static double	check_sphere_hit(t_ray *ray, t_sphere *sphere,
 	return (0);
 }
 
-static void	calc_sphere_params(t_ray *ray, t_sphere *sphere, double *params)
-{
-	t_vector	co;
-
-	params[0] = dot(ray->direction, ray->direction);
-	co = substract(ray->origin, sphere->position);
-	params[1] = 2 * dot(co, ray->direction);
-	params[2] = dot(co, co) - (sphere->radius * sphere->radius);
-	params[3] = (params[1] * params[1]) - 4 * params[0] * params[2];
-}
-
 double	sphere_intersection(t_display *display, t_sphere *sphere,
 			t_ray *ray, t_hit *hit)
 {
-	double		params[4];
+	double		a;
+	double		b;
+	double		c;
+	t_vector	co;
+	double		delta;
 	double		result;
 
 	(void)display;
-	calc_sphere_params(ray, sphere, params);
-	if (params[3] >= 0)
+	a = dot(ray->direction, ray->direction);
+	co = substract(ray->origin, sphere->position);
+	b = 2 * dot(co, ray->direction);
+	c = dot(co, co) - (sphere->radius * sphere->radius);
+	delta = (b * b) - 4 * a * c;
+	if (delta >= 0)
 	{
 		result = check_sphere_hit(ray, sphere, hit,
-				(-params[1] - sqrt(params[3])) / (2 * params[0]));
+				(-b - sqrt(delta)) / (2 * a));
 		if (result > 0)
 			return (result);
 		return (check_sphere_hit(ray, sphere, hit,
-				(-params[1] + sqrt(params[3])) / (2 * params[0])));
+				(-b + sqrt(delta)) / (2 * a)));
 	}
 	return (0);
 }

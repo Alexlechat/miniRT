@@ -52,3 +52,5 @@ int	draw_position(t_display *display, int x, int y, int color)
 		color);
 	return (0);
 }
+
+

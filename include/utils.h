@@ -13,21 +13,21 @@
 #ifndef UTILS_H
 # define UTILS_H
 
-# include <stdbool.h>
+#include <stdbool.h>
 
-typedef struct s_sphere	t_sphere;
+typedef struct s_sphere t_sphere;
 
 typedef union u_color
 {
-	struct
-	{
-		unsigned char	b;
-		unsigned char	g;
-		unsigned char	r;
-		unsigned char	a;
-	};
-	int	color;
-}	t_color;
+    struct
+    {
+        unsigned char b;
+        unsigned char g;
+		unsigned char r;
+        unsigned char a;
+    };
+    int color;
+}   t_color;
 
 typedef struct s_vector
 {

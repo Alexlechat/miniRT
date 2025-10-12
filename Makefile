@@ -40,20 +40,14 @@ SRCS        := src/core/utils.c \
                src/display/normal.c \
                src/display/create_ray.c \
                src/display/intersection.c \
-               src/display/cylinder_inter.c \
-               src/display/cylinder_caps.c \
+               src/display/cylinder.c \
                src/display/quadratic.c \
                src/display/reflection.c \
                src/display/render.c \
-               src/display/lighting.c \
-               src/display/apply_lighting.c \
-               src/display/camera_basis.c \
-               src/display/find_hit.c \
                src/maths/ray.c \
                src/maths/intersection.c \
                src/maths/maths_utils.c \
                src/maths/vector_utils.c \
-               src/maths/vector_ops.c \
                src/parsing/elements/ambient.c \
                src/parsing/elements/camera.c \
                src/parsing/elements/light.c \

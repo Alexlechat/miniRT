@@ -51,3 +51,33 @@ t_vector	normalize(t_vector u)
 	}
 	return (result);
 }
+
+t_vector	add(t_vector u, t_vector v)
+{
+	t_vector	result;
+
+	result.x = u.x + v.x;
+	result.y = u.y + v.y;
+	result.z = u.z + v.z;
+	return (result);
+}
+
+t_vector	substract(t_vector u, t_vector v)
+{
+	t_vector	result;
+
+	result.x = u.x - v.x;
+	result.y = u.y - v.y;
+	result.z = u.z - v.z;
+	return (result);
+}
+
+t_vector	multiply(t_vector u, double scalar)
+{
+	t_vector	result;
+
+	result.x = u.x * scalar;
+	result.y = u.y * scalar;
+	result.z = u.z * scalar;
+	return (result);
+}
