@@ -23,7 +23,6 @@ INC_DIR     := include
 
 LIBFT_DIR   := libft
 LIBFT       := $(LIBFT_DIR)/libft.a
-LIBFT_SRCS  := $(shell find $(LIBFT_DIR) -name "*.c")
 
 MLX_DIR     := mlx_linux
 MLX         := $(MLX_DIR)/libmlx_Linux.a
@@ -31,23 +30,63 @@ MLX_FLAGS   := -I/usr/include -I$(MLX_DIR)
 MLX_LINKS   := -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 
 INCS        := -I$(INC_DIR) -I$(LIBFT_DIR)/includes
-SRCS        := $(shell find $(SRC_DIR) -name "*.c")
-OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-LST_INCS	:=	$(shell find $(inc_dir) -name "*.h")
+# Source files
+SRCS        := src/core/utils.c \
+               src/core/main.c \
+               src/display/init_display.c \
+               src/display/window.c \
+               src/display/display_utils.c \
+               src/display/normal.c \
+               src/display/create_ray.c \
+               src/display/intersection.c \
+               src/display/cylinder_inter.c \
+               src/display/cylinder_caps.c \
+               src/display/quadratic.c \
+               src/display/reflection.c \
+               src/display/render.c \
+               src/display/lighting.c \
+               src/display/apply_lighting.c \
+               src/display/camera_basis.c \
+               src/display/find_hit.c \
+               src/maths/ray.c \
+               src/maths/intersection.c \
+               src/maths/maths_utils.c \
+               src/maths/vector_utils.c \
+               src/maths/vector_ops.c \
+               src/parsing/elements/ambient.c \
+               src/parsing/elements/camera.c \
+               src/parsing/elements/light.c \
+               src/parsing/file.c \
+               src/parsing/objects/bonus_objects.c \
+               src/parsing/objects/objects.c \
+               src/parsing/objects/add_sp.c \
+               src/parsing/objects/add_cy.c \
+               src/parsing/objects/add_pl.c \
+               src/parsing/parsing.c \
+               src/parsing/parsing_dispatch.c \
+               src/parsing/parsing_helpers.c \
+               src/parsing/utils/coordinate_utils.c \
+               src/parsing/utils/elements_utils.c \
+               src/parsing/utils/number_utils.c \
+               src/parsing/utils/trim_utils.c \
+               src/parsing/validation/validation_helpers.c \
+               src/parsing/validation/validation_utils.c
+
+OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # ==== RULES ====
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(MLX) $(OBJS) $(LST_INCS)
+$(NAME): $(LIBFT) $(MLX) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_LINKS) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(MLX_FLAGS) $(INCS) -c $< -o $@
 
-$(LIBFT): $(LIBFT_SRCS)
+$(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
 $(MLX):

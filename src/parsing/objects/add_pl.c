@@ -13,6 +13,7 @@
 #include "display.h"
 #include "libft.h"
 #include "miniRT.h"
+#include "vectors.h"
 
 static int	parse_position(char *pos_str, t_vector *position);
 static int	parse_vector(char *vector_str, t_vector *vector);
@@ -38,6 +39,8 @@ int	add_values_pl(char **line, t_display *display)
 		return (0);
 	if (!parse_vector(line[2], &display->plane[current_index].orientation))
 		return (0);
+	display->plane[current_index].orientation = normalize(
+			display->plane[current_index].orientation);
 	if (!parse_color(line[3], &display->plane[current_index].color))
 		return (0);
 	display->nb_planes++;

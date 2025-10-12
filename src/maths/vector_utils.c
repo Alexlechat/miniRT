@@ -6,14 +6,13 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 13:42:16 by allefran          #+#    #+#             */
-/*   Updated: 2025/10/06 13:27:01 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/12 14:28:00 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "math.h"
 #include "utils.h"
 
-// scalar product
 double	dot(t_vector u, t_vector v)
 {
 	double	scalar;
@@ -50,35 +49,5 @@ t_vector	normalize(t_vector u)
 		result.y = 0;
 		result.z = 0;
 	}
-	return (result);
-}
-
-t_vector	add(t_vector u, t_vector v)
-{
-	t_vector	result;
-
-	result.x = u.x + v.x;
-	result.y = u.y + v.y;
-	result.z = u.z + v.z;
-	return (result);
-}
-
-t_vector	substract(t_vector u, t_vector v)
-{
-	t_vector	result;
-
-	result.x = u.x - v.x;
-	result.y = u.y - v.y;
-	result.z = u.z - v.z;
-	return (result);
-}
-
-t_vector	multiply(t_vector u, double scalar)
-{
-	t_vector	result;
-
-	result.x = u.x * scalar;
-	result.y = u.y * scalar;
-	result.z = u.z * scalar;
 	return (result);
 }

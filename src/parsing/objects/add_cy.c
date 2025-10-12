@@ -13,10 +13,27 @@
 #include "display.h"
 #include "libft.h"
 #include "miniRT.h"
+#include "vectors.h"
 
-static int	parse_position(char *pos_str, t_vector *position);
+static int		parse_position(char *pos_str, t_vector *position);
 static double	parse_vector(char *vector_str, t_vector *vector);
-static int	parse_color(char *color_str, t_color *color);
+static int		parse_color(char *color_str, t_color *color);
+static int		set_cylinder_values(char **line, t_display *display, int idx);
+
+static int	set_cylinder_values(char **line, t_display *display, int idx)
+{
+	if (!parse_position(line[1], &display->cylinder[idx].position))
+		return (0);
+	if (!parse_vector(line[2], &display->cylinder[idx].orientation))
+		return (0);
+	display->cylinder[idx].orientation = normalize(
+			display->cylinder[idx].orientation);
+	display->cylinder[idx].radius = ft_atoi(line[3]) / 2;
+	display->cylinder[idx].height = ft_atof(line[4]);
+	if (!parse_color(line[5], &display->cylinder[idx].color))
+		return (0);
+	return (1);
+}
 
 int	add_values_cy(char **line, t_display *display)
 {
@@ -34,13 +51,7 @@ int	add_values_cy(char **line, t_display *display)
 	}
 	display->cylinder = new_cylinders;
 	current_index = display->nb_cylinders;
-	if (!parse_position(line[1], &display->cylinder[current_index].position))
-		return (0);
-	if (!parse_vector(line[2], &display->cylinder[current_index].orientation))
-		return (0);
-	display->cylinder[current_index].radius = ft_atoi(line[3]) / 2;
-	display->cylinder[current_index].height = ft_atof(line[4]);
-	if (!parse_color(line[5], &display->cylinder[current_index].color))
+	if (!set_cylinder_values(line, display, current_index))
 		return (0);
 	display->nb_cylinders++;
 	return (1);

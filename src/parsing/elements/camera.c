@@ -13,6 +13,7 @@
 #include "../../../libft/includes/libft.h"
 #include "display.h"
 #include "miniRT.h"
+#include "vectors.h"
 
 static int	parse_position(char *pos_str, t_vector *position);
 static int	parse_orientation(char *orient_str, t_vector *orientation);
@@ -82,6 +83,7 @@ static int	add_values(char **line, t_display *display)
 		return (0);
 	if (!parse_orientation(line[2], &display->camera.orientation))
 		return (0);
+	display->camera.orientation = normalize(display->camera.orientation);
 	display->camera.fov = atoi(line[3]);
 	return (1);
 }

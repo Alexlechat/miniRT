@@ -21,8 +21,8 @@
 # define EVENT_CLOSE 17 // (cross X)
 # define DEFAULT_HEIGHT 600
 # define DEFAULT_WIDTH 1000
-# define ORIGIN_X (DEFAULT_WIDTH / 2)
-# define ORIGIN_Y (DEFAULT_HEIGHT / 2)
+# define ORIGIN_X 500
+# define ORIGIN_Y 300
 # define ORIGIN_Z 0
 # define RED 0xFF0000
 # define GREEN 0x00FF00
@@ -58,10 +58,19 @@ int				key_press(int key_code, t_display *display);
 int				render_scene(t_display *display);
 int				draw_position(t_display *display, int x, int y, int color);
 int				create_ray(t_display *display, int pixel_x, int pixel_y);
-t_hit 			find_closest_hit(t_display *display, t_ray ray);
-double 			sphere_intersection(t_display *display, t_sphere *sphere, t_ray *ray, t_hit *hit);
-double  		plane_intersection(t_display *display, t_plane *plane, t_ray *ray, t_hit *hit);
-bool    		reflection(t_display *display, t_vector origin, t_hit *hit_object);
-t_vector    	sphere_normal(t_sphere *sphere, t_vector *coordinate);
+t_hit			find_closest_hit(t_display *display, t_ray ray);
+double			sphere_intersection(t_display *display, t_sphere *sphere,
+					t_ray *ray, t_hit *hit);
+double			plane_intersection(t_display *display, t_plane *plane,
+					t_ray *ray, t_hit *hit);
+double			cylinder_intersection(t_display *display,
+					t_cylinder *cylinder, t_ray *ray, t_hit *hit);
+bool			reflection(t_display *display, t_vector origin,
+					t_hit *hit_object);
+t_vector		sphere_normal(t_sphere *sphere, t_vector *coordinate);
+t_vector		cylinder_normal(t_cylinder *cylinder, t_vector *coordinate);
+double			calc_ambient(double obj_c, double amb_c, double brightness);
+unsigned char	clamp_color(double ambient, double diffuse);
+void			apply_lighting(t_display *display, t_hit *hit);
 
 #endif
