@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:57:14 by allefran          #+#    #+#             */
-/*   Updated: 2025/10/01 09:42:08 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:07:00 by anpicard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 # define KEY_ESC 65307  // ESC
 # define EVENT_CLOSE 17 // (cross X)
-# define DEFAULT_HEIGHT 600
-# define DEFAULT_WIDTH 1000
+# define DEFAULT_HEIGHT 1000
+# define DEFAULT_WIDTH 1600
 # define ORIGIN_X (DEFAULT_WIDTH / 2)
 # define ORIGIN_Y (DEFAULT_HEIGHT / 2)
 # define ORIGIN_Z 0
