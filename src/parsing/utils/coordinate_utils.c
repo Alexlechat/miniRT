@@ -76,7 +76,7 @@ static int	validate_vector_values(char **arg_splited, int word_count)
 	return (result);
 }
 
-int	vector_orientation_check(char *str)
+int	vector_or_check(char *str)
 {
 	char	**arg_splited;
 	int		result;

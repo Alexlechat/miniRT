@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 14:39:10 by anpicard          #+#    #+#             */
-/*   Updated: 2025/09/03 13:51:21 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 09:35:17 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	plane(char **line, t_display *display)
 {
 	if (line[1] && !coordinate_check(line[1]))
 		return (0);
-	if (line[2] && !vector_orientation_check(line[2]))
+	if (line[2] && !vector_or_check(line[2]))
 		return (0);
 	if (line[3] && !color_check(line[3]))
 		return (0);
@@ -95,7 +95,7 @@ static int	cylinder(char **line, t_display *display)
 {
 	if (line[1] && !coordinate_check(line[1]))
 		return (0);
-	if (line[2] && !vector_orientation_check(line[2]))
+	if (line[2] && !vector_or_check(line[2]))
 		return (0);
 	if (!validate_cylinder_dimensions(line))
 		return (0);

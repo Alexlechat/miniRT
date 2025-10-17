@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:02:32 by anpicard          #+#    #+#             */
-/*   Updated: 2025/09/03 14:25:12 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 09:35:17 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "vectors.h"
 
 static int	parse_position(char *pos_str, t_vector *position);
-static int	parse_orientation(char *orient_str, t_vector *orientation);
+static int	parse_or(char *orient_str, t_vector *or);
 static int	add_values(char **line, t_display *display);
 
 int	camera(char **line, int *camera_count, t_display *display)
@@ -29,7 +29,7 @@ int	camera(char **line, int *camera_count, t_display *display)
 		return (0);
 	if (!coordinate_check(line[1]))
 		return (0);
-	if (!vector_orientation_check(line[2]))
+	if (!vector_or_check(line[2]))
 		return (0);
 	if (!fov_check(line[3]))
 		return (0);
@@ -59,7 +59,7 @@ static int	parse_position(char *pos_str, t_vector *position)
 	return (1);
 }
 
-static int	parse_orientation(char *orient_str, t_vector *orientation)
+static int	parse_or(char *orient_str, t_vector *or)
 {
 	char	**parts;
 
@@ -70,9 +70,9 @@ static int	parse_orientation(char *orient_str, t_vector *orientation)
 			free_str(parts);
 		return (0);
 	}
-	orientation->x = atof(parts[0]);
-	orientation->y = atof(parts[1]);
-	orientation->z = atof(parts[2]);
+	or->x = atof(parts[0]);
+	or->y = atof(parts[1]);
+	or->z = atof(parts[2]);
 	free_str(parts);
 	return (1);
 }
@@ -81,9 +81,9 @@ static int	add_values(char **line, t_display *display)
 {
 	if (!parse_position(line[1], &display->camera.position))
 		return (0);
-	if (!parse_orientation(line[2], &display->camera.orientation))
+	if (!parse_or(line[2], &display->camera.or))
 		return (0);
-	display->camera.orientation = normalize(display->camera.orientation);
+	display->camera.or = normalize(display->camera.or);
 	display->camera.fov = atoi(line[3]);
 	return (1);
 }

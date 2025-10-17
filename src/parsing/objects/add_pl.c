@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 09:55:20 by anpicard          #+#    #+#             */
-/*   Updated: 2025/09/30 13:29:38 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 09:36:09 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	parse_color(char *color_str, t_color *color);
 int	add_values_pl(char **line, t_display *display)
 {
 	t_plane	*new_planes;
-	int		current_index;
+	int		index;
 
 	new_planes = malloc(sizeof(t_plane) * (display->nb_planes + 1));
 	if (!new_planes)
@@ -34,13 +34,13 @@ int	add_values_pl(char **line, t_display *display)
 		free(display->plane);
 	}
 	display->plane = new_planes;
-	current_index = display->nb_planes;
-	if (!parse_position(line[1], &display->plane[current_index].position))
+	index = display->nb_planes;
+	if (!parse_position(line[1], &display->plane[index].position))
 		return (0);
-	if (!parse_vector(line[2], &display->plane[current_index].orientation))
+	if (!parse_vector(line[2], &display->plane[index].or))
 		return (0);
-	display->plane[current_index].orientation = normalize(display->plane[current_index].orientation);
-	if (!parse_color(line[3], &display->plane[current_index].color))
+	display->plane[index].or = normalize(display->plane[index].or);
+	if (!parse_color(line[3], &display->plane[index].color))
 		return (0);
 	display->nb_planes++;
 	return (1);

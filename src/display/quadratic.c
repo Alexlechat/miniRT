@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 11:37:42 by allefran          #+#    #+#             */
-/*   Updated: 2025/10/12 14:28:00 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/10/17 09:43:20 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 bool	solve_quadratic(t_quadratic *quadratic)
 {
-	quadratic->delta = (quadratic->b * quadratic->b)
-		- (4 * quadratic->a * quadratic->c);
+	quadratic->delta = (quadratic->b * quadratic->b) - (4 * quadratic->a
+			* quadratic->c);
 	if (quadratic->delta < 0)
 		return (false);
 	quadratic->solution_1 = (-quadratic->b - sqrt(quadratic->delta))

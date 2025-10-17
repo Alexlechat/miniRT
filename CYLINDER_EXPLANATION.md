@@ -14,7 +14,7 @@ L'intersection rayon-cylindre est décomposée en **3 parties** :
 ```c
 typedef struct s_cylinder {
     t_vector    position;      // Point de base du cylindre
-    t_vector    orientation;   // Axe du cylindre (normalisé)
+    t_vector    or;   // Axe du cylindre (normalisé)
     double      radius;        // Rayon du cylindre
     double      height;        // Hauteur du cylindre
     t_color     color;         // Couleur
@@ -23,7 +23,7 @@ typedef struct s_cylinder {
 
 **Représentation géométrique :**
 - `position` : Point P₁ (base du cylindre)
-- `position + orientation * height` : Point P₂ (sommet du cylindre)
+- `position + or * height` : Point P₂ (sommet du cylindre)
 - L'axe du cylindre va de P₁ à P₂
 
 ---
@@ -270,7 +270,7 @@ cy  10,-20,40  0.5,1,0.5  10  20  10,0,255
 ```
 
 - Position : (10, -20, 40)
-- Orientation : (0.5, 1, 0.5) → sera normalisé automatiquement
+- or : (0.5, 1, 0.5) → sera normalisé automatiquement
 - Diamètre : 10 → rayon = 5
 - Hauteur : 20
 - Couleur : RGB(10, 0, 255) - bleu violet

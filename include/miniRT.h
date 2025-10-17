@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 09:24:20 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/03 14:08:25 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 09:35:17 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	**split_and_validate_count(char *str);
 int		ratio_check(char *str);
 int		color_check(char *str);
 int		coordinate_check(char *str);
-int		vector_orientation_check(char *str);
+int		vector_or_check(char *str);
 int		fov_check(char *str);
 
 void	free_str(char **str);

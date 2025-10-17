@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 09:55:20 by anpicard          #+#    #+#             */
-/*   Updated: 2025/10/07 10:33:44 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 09:35:17 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 #include "miniRT.h"
 #include "vectors.h"
 
-static int	parse_position(char *pos_str, t_vector *position);
+static int		parse_position(char *pos_str, t_vector *position);
 static double	parse_vector(char *vector_str, t_vector *vector);
-static int	parse_color(char *color_str, t_color *color);
+static int		parse_color(char *color_str, t_color *color);
 
 int	add_values_cy(char **line, t_display *display)
 {
 	t_cylinder	*new_cylinders;
-	int			current_index;
+	int			index;
 
 	new_cylinders = malloc(sizeof(t_cylinder) * (display->nb_cylinders + 1));
 	if (!new_cylinders)
@@ -34,15 +34,15 @@ int	add_values_cy(char **line, t_display *display)
 		free(display->cylinder);
 	}
 	display->cylinder = new_cylinders;
-	current_index = display->nb_cylinders;
-	if (!parse_position(line[1], &display->cylinder[current_index].position))
+	index = display->nb_cylinders;
+	if (!parse_position(line[1], &display->cylinder[index].position))
 		return (0);
-	if (!parse_vector(line[2], &display->cylinder[current_index].orientation))
+	if (!parse_vector(line[2], &display->cylinder[index].or))
 		return (0);
-	display->cylinder[current_index].orientation = normalize(display->cylinder[current_index].orientation);
-	display->cylinder[current_index].radius = ft_atoi(line[3]) / 2;
-	display->cylinder[current_index].height = ft_atof(line[4]);
-	if (!parse_color(line[5], &display->cylinder[current_index].color))
+	display->cylinder[index].or = normalize(display->cylinder[index].or);
+	display->cylinder[index].radius = ft_atoi(line[3]) / 2;
+	display->cylinder[index].height = ft_atof(line[4]);
+	if (!parse_color(line[5], &display->cylinder[index].color))
 		return (0);
 	display->nb_cylinders++;
 	return (1);

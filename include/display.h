@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:57:14 by allefran          #+#    #+#             */
-/*   Updated: 2025/10/14 14:07:00 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/10/17 09:29:59 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # define EVENT_CLOSE 17 // (cross X)
 # define DEFAULT_HEIGHT 1000
 # define DEFAULT_WIDTH 1600
-# define ORIGIN_X (DEFAULT_WIDTH / 2)
-# define ORIGIN_Y (DEFAULT_HEIGHT / 2)
 # define ORIGIN_Z 0
 # define RED 0xFF0000
 # define GREEN 0x00FF00
@@ -56,7 +54,6 @@ void			init_display(t_display *display);
 int				close_window(t_display *display);
 int				key_press(int key_code, t_display *display);
 int				render_scene(t_display *display);
-int				draw_position(t_display *display, int x, int y, int color);
 int				create_ray(t_display *display, int pixel_x, int pixel_y);
 t_hit 			find_closest_hit(t_display *display, t_ray ray);
 double 			sphere_intersection(t_display *display, t_sphere *sphere, t_ray *ray, t_hit *hit);

@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 09:32:13 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/03 14:26:06 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 09:44:36 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,15 @@ typedef struct s_camera
 {
 	int				fov;
 	t_vector		position;
-	t_vector		orientation;
+	t_vector		or;
 }					t_camera;
+
+typedef struct s_camera_basis
+{
+	t_vector	right;
+	t_vector	up;
+	t_vector	forward;
+}				t_camera_basis;
 
 typedef struct s_light
 {
@@ -34,5 +41,6 @@ typedef struct s_light
 	t_color			color;
 	t_vector		position;
 }					t_light;
+
 
 #endif

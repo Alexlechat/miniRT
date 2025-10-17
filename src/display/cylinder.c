@@ -3,38 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:52:00 by anpicard          #+#    #+#             */
-/*   Updated: 2025/10/12 15:29:56 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/10/17 09:43:03 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
 #include "display.h"
 #include "vectors.h"
+#include <math.h>
 
 static void	solve_cylinder_quadratic(t_quadratic *quad, t_cylinder *cylinder,
-				t_ray *ray, t_vector *oc)
+		t_ray *ray, t_vector *oc)
 {
 	t_vector	ray_perp;
 	t_vector	oc_perp;
 	double		axis_dot_ray;
 	double		axis_dot_oc;
 
-	axis_dot_ray = dot(cylinder->orientation, ray->direction);
-	axis_dot_oc = dot(cylinder->orientation, *oc);
-	ray_perp = substract(ray->direction,
-			multiply(cylinder->orientation, axis_dot_ray));
-	oc_perp = substract(*oc, multiply(cylinder->orientation, axis_dot_oc));
+	axis_dot_ray = dot(cylinder->or, ray->direction);
+	axis_dot_oc = dot(cylinder->or, *oc);
+	ray_perp = substract(ray->direction, multiply(cylinder->or, axis_dot_ray));
+	oc_perp = substract(*oc, multiply(cylinder->or, axis_dot_oc));
 	quad->a = dot(ray_perp, ray_perp);
 	quad->b = 2.0 * dot(ray_perp, oc_perp);
 	quad->c = dot(oc_perp, oc_perp) - (cylinder->radius * cylinder->radius);
 	quad->delta = quad->b * quad->b - 4 * quad->a * quad->c;
 }
 
-static bool	check_cylinder_caps(t_cylinder *cylinder, t_ray *ray,
-				t_hit *hit, double t)
+static bool	check_cylinder_caps(t_cylinder *cylinder, t_ray *ray, t_hit *hit,
+		double t)
 {
 	t_vector	hit_point;
 	t_vector	to_hit;
@@ -44,7 +43,7 @@ static bool	check_cylinder_caps(t_cylinder *cylinder, t_ray *ray,
 	epsilon = 1e-4;
 	hit_point = add(ray->origin, multiply(ray->direction, t));
 	to_hit = substract(hit_point, cylinder->position);
-	projection = dot(to_hit, cylinder->orientation);
+	projection = dot(to_hit, cylinder->or);
 	if (projection >= -epsilon && projection <= cylinder->height + epsilon)
 	{
 		hit->hit = true;
@@ -57,8 +56,8 @@ static bool	check_cylinder_caps(t_cylinder *cylinder, t_ray *ray,
 	return (false);
 }
 
-static bool	intersect_cap(t_cylinder *cylinder, t_ray *ray,
-				t_hit *hit, double cap_offset)
+static bool	intersect_cap(t_cylinder *cylinder, t_ray *ray, t_hit *hit,
+		double cap_offset)
 {
 	t_vector	cap_center;
 	double		denom;
@@ -68,13 +67,12 @@ static bool	intersect_cap(t_cylinder *cylinder, t_ray *ray,
 	t_vector	to_hit;
 	double		dist_sq;
 
-	cap_center = add(cylinder->position,
-			multiply(cylinder->orientation, cap_offset));
-	denom = dot(ray->direction, cylinder->orientation);
+	cap_center = add(cylinder->position, multiply(cylinder->or, cap_offset));
+	denom = dot(ray->direction, cylinder->or);
 	if (fabs(denom) > 1e-6)
 	{
 		to_cap = substract(cap_center, ray->origin);
-		t = dot(to_cap, cylinder->orientation) / denom;
+		t = dot(to_cap, cylinder->or) / denom;
 		if (t >= 0.001)
 		{
 			hit_point = add(ray->origin, multiply(ray->direction, t));
@@ -87,9 +85,9 @@ static bool	intersect_cap(t_cylinder *cylinder, t_ray *ray,
 				hit->distance = t;
 				hit->color = cylinder->color;
 				if (cap_offset > 0)
-					hit->normal = cylinder->orientation;
+					hit->normal = cylinder->or ;
 				else
-					hit->normal = multiply(cylinder->orientation, -1);
+					hit->normal = multiply(cylinder->or, -1);
 				return (true);
 			}
 		}
@@ -98,7 +96,7 @@ static bool	intersect_cap(t_cylinder *cylinder, t_ray *ray,
 }
 
 double	cylinder_intersection(t_display *display, t_cylinder *cylinder,
-			t_ray *ray, t_hit *hit)
+		t_ray *ray, t_hit *hit)
 {
 	t_quadratic	quad;
 	t_vector	oc;
@@ -110,12 +108,12 @@ double	cylinder_intersection(t_display *display, t_cylinder *cylinder,
 	if (quad.delta >= 0)
 	{
 		quad.solution_1 = (-quad.b - sqrt(quad.delta)) / (2 * quad.a);
-		if (quad.solution_1 >= 0.001
-			&& check_cylinder_caps(cylinder, ray, hit, quad.solution_1))
+		if (quad.solution_1 >= 0.001 && check_cylinder_caps(cylinder, ray, hit,
+				quad.solution_1))
 			return (quad.solution_1);
 		quad.solution_2 = (-quad.b + sqrt(quad.delta)) / (2 * quad.a);
-		if (quad.solution_2 >= 0.001
-			&& check_cylinder_caps(cylinder, ray, hit, quad.solution_2))
+		if (quad.solution_2 >= 0.001 && check_cylinder_caps(cylinder, ray, hit,
+				quad.solution_2))
 			return (quad.solution_2);
 	}
 	cap_hit.hit = false;

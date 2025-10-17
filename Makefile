@@ -6,7 +6,7 @@
 #    By: allefran <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/05 19:11:24 by anpicard          #+#    #+#              #
-#    Updated: 2025/10/02 11:47:58 by allefran         ###   ########.fr        #
+#    Updated: 2025/10/17 09:41:06 by allefran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,39 +33,40 @@ INCS        := -I$(INC_DIR) -I$(LIBFT_DIR)/includes
 
 # Source files
 SRCS        := src/core/utils.c \
-               src/core/main.c \
-               src/display/init_display.c \
-               src/display/window.c \
-               src/display/display_utils.c \
-               src/display/normal.c \
-               src/display/create_ray.c \
-               src/display/intersection.c \
-               src/display/cylinder.c \
-               src/display/quadratic.c \
-               src/display/reflection.c \
-               src/display/render.c \
-               src/maths/ray.c \
-               src/maths/intersection.c \
-               src/maths/maths_utils.c \
-               src/maths/vector_utils.c \
-               src/parsing/elements/ambient.c \
-               src/parsing/elements/camera.c \
-               src/parsing/elements/light.c \
-               src/parsing/file.c \
-               src/parsing/objects/bonus_objects.c \
-               src/parsing/objects/objects.c \
-               src/parsing/objects/add_sp.c \
-               src/parsing/objects/add_cy.c \
-               src/parsing/objects/add_pl.c \
-               src/parsing/parsing.c \
-               src/parsing/parsing_dispatch.c \
-               src/parsing/parsing_helpers.c \
-               src/parsing/utils/coordinate_utils.c \
-               src/parsing/utils/elements_utils.c \
-               src/parsing/utils/number_utils.c \
-               src/parsing/utils/trim_utils.c \
-               src/parsing/validation/validation_helpers.c \
-               src/parsing/validation/validation_utils.c
+                src/core/main.c \
+                src/display/init_display.c \
+                src/display/window.c \
+                src/display/display_utils.c \
+                src/display/normal.c \
+                src/display/create_ray.c \
+                src/display/intersection.c \
+                src/display/cylinder.c \
+                src/display/quadratic.c \
+                src/display/reflection.c \
+                src/display/render.c \
+                src/maths/ray.c \
+                src/maths/intersection.c \
+                src/maths/maths_utils.c \
+                src/maths/vector_utils.c \
+                src/maths/vector_operation.c \
+                src/parsing/elements/ambient.c \
+                src/parsing/elements/camera.c \
+                src/parsing/elements/light.c \
+                src/parsing/file.c \
+                src/parsing/objects/bonus_objects.c \
+                src/parsing/objects/objects.c \
+                src/parsing/objects/add_sp.c \
+                src/parsing/objects/add_cy.c \
+                src/parsing/objects/add_pl.c \
+                src/parsing/parsing.c \
+                src/parsing/parsing_dispatch.c \
+                src/parsing/parsing_helpers.c \
+                src/parsing/utils/coordinate_utils.c \
+                src/parsing/utils/elements_utils.c \
+                src/parsing/utils/number_utils.c \
+                src/parsing/utils/trim_utils.c \
+                src/parsing/validation/validation_helpers.c \
+                src/parsing/validation/validation_utils.c
 
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
