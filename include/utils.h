@@ -71,5 +71,6 @@ typedef struct s_quadradic
 
 int		convert_color(t_color color);
 t_color	create_color(int r, int g, int b);
+bool	solve_quadratic(t_quadratic *quadratic);
 
 #endif

@@ -29,6 +29,25 @@
 # define YELLOW 0xe8eb34
 # define ORANGE 0xff8000
 
+typedef struct s_viewport
+{
+	double	norm_x;
+	double	norm_y;
+	double	height;
+	double	width;
+	double	ratio;
+}			t_viewport;
+
+typedef struct s_lighting
+{
+	double	ambient_r;
+	double	ambient_g;
+	double	ambient_b;
+	double	diffuse_r;
+	double	diffuse_g;
+	double	diffuse_b;
+}			t_lighting;
+
 typedef struct s_display
 {
 	void		*mlx;

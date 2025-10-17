@@ -14,6 +14,18 @@
 #include "vectors.h"
 #include <math.h>
 
+static void	solve_sphere_quadratic(t_quadratic *quad, t_sphere *sphere,
+		t_ray *ray)
+{
+	t_vector	co;
+
+	co = substract(ray->origin, sphere->position);
+	quad->a = dot(ray->direction, ray->direction);
+	quad->b = 2 * dot(co, ray->direction);
+	quad->c = dot(co, co) - (sphere->radius * sphere->radius);
+	solve_quadratic(quad);
+}
+
 static double	check_sphere_hit(t_ray *ray, t_sphere *sphere, t_hit *hit,
 		double x)
 {
@@ -32,29 +44,17 @@ static double	check_sphere_hit(t_ray *ray, t_sphere *sphere, t_hit *hit,
 double	sphere_intersection(t_display *display, t_sphere *sphere, t_ray *ray,
 		t_hit *hit)
 {
-	double		a;
-	double		b;
-	double		c;
-	t_vector	co;
-	double		delta;
+	t_quadratic	quad;
 	double		result;
 
 	(void)display;
-	a = dot(ray->direction, ray->direction);
-	co = substract(ray->origin, sphere->position);
-	b = 2 * dot(co, ray->direction);
-	c = dot(co, co) - (sphere->radius * sphere->radius);
-	delta = (b * b) - 4 * a * c;
-	if (delta >= 0)
-	{
-		result = check_sphere_hit(ray, sphere, hit, (-b - sqrt(delta)) / (2
-					* a));
-		if (result > 0)
-			return (result);
-		return (check_sphere_hit(ray, sphere, hit, (-b + sqrt(delta)) / (2
-					* a)));
-	}
-	return (0);
+	solve_sphere_quadratic(&quad, sphere, ray);
+	if (quad.delta < 0)
+		return (0);
+	result = check_sphere_hit(ray, sphere, hit, quad.solution_1);
+	if (result > 0)
+		return (result);
+	return (check_sphere_hit(ray, sphere, hit, quad.solution_2));
 }
 
 double	plane_intersection(t_display *display, t_plane *plane, t_ray *ray,
