@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 09:33:28 by allefran          #+#    #+#             */
-/*   Updated: 2025/10/17 09:37:06 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 13:06:31 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 #include <math.h>
 
 static void	reset_camera(t_display *display);
-
-double	convert_degree(double degree)
-{
-	return (degree * M_PI / 180);
-}
 
 void	calculate_focal(t_display *display)
 {

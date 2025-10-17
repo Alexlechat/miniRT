@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
-#include "../../libft/includes/libft.h"
+#include "libft.h"
+#include "parsing.h"
 #include <stdlib.h>
 
 int	fov_check(char *str)

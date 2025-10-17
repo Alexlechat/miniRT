@@ -6,12 +6,12 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:44:16 by allefran          #+#    #+#             */
-/*   Updated: 2025/10/17 11:17:05 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:21:44 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "display.h"
 #include "libft.h"
+#include "display.h"
 
 static t_hit	check_spheres(t_display *display, t_ray ray);
 static t_hit	check_planes(t_display *display, t_ray ray, t_hit closest_hit);

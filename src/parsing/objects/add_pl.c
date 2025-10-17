@@ -6,13 +6,13 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 09:55:20 by anpicard          #+#    #+#             */
-/*   Updated: 2025/10/17 09:36:09 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:24:00 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "display.h"
 #include "libft.h"
-#include "miniRT.h"
+#include "display.h"
+#include "parsing.h"
 #include "vectors.h"
 
 static int	parse_position(char *pos_str, t_vector *position);

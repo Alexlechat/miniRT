@@ -6,13 +6,13 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:02:22 by anpicard          #+#    #+#             */
-/*   Updated: 2025/09/03 14:25:12 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:23:40 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../libft/includes/libft.h"
+#include "libft.h"
 #include "display.h"
-#include "miniRT.h"
+#include "parsing.h"
 
 static int	parse_position(char *pos_str, t_vector *position);
 static int	parse_color(char *color_str, t_color *color);

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "parsing.h"
 
 int	is_valid_number(char *str)
 {

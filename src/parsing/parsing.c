@@ -6,18 +6,17 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 10:47:35 by allefran          #+#    #+#             */
-/*   Updated: 2025/10/17 09:27:24 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:25:22 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "miniRT.h"
+#include "parsing.h"
 #include "display.h"
 #include "vectors.h"
 #include <fcntl.h>
-#include <stdbool.h>
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 static int	process_file_lines(int fd, t_count *count, t_display *display);
 

@@ -6,13 +6,13 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 14:26:00 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/22 13:27:11 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:21:22 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "display.h"
 #include "libft.h"
-#include "miniRT.h"
+#include "display.h"
+#include "parsing.h"
 
 int	main(int argc, char **argv)
 {

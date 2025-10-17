@@ -6,13 +6,13 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 18:30:00 by anpicard          #+#    #+#             */
-/*   Updated: 2025/09/03 14:05:50 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:15:57 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "display.h"
 #include "libft.h"
-#include "miniRT.h"
+#include "display.h"
+#include "parsing.h"
 #include <stdlib.h>
 
 int	parse_mandatory_elements(char *identifier, char **line_splited,

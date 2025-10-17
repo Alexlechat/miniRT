@@ -6,12 +6,12 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:41:50 by allefran          #+#    #+#             */
-/*   Updated: 2025/10/17 11:32:14 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:10:38 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
-#include "miniRT.h"
+#include "parsing.h"
 #include <stdlib.h>
 
 static void	init_mlx(t_display *display);

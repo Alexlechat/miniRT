@@ -6,13 +6,13 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:02:32 by anpicard          #+#    #+#             */
-/*   Updated: 2025/10/17 09:35:17 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:23:34 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../libft/includes/libft.h"
+#include "libft.h"
 #include "display.h"
-#include "miniRT.h"
+#include "parsing.h"
 #include "vectors.h"
 
 static int	parse_position(char *pos_str, t_vector *position);
@@ -29,7 +29,7 @@ int	camera(char **line, int *camera_count, t_display *display)
 		return (0);
 	if (!coordinate_check(line[1]))
 		return (0);
-	if (!vector_or_check(line[2]))
+	if (!vector_orientation_check(line[2]))
 		return (0);
 	if (!fov_check(line[3]))
 		return (0);

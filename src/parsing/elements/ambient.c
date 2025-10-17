@@ -6,13 +6,13 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:02:14 by anpicard          #+#    #+#             */
-/*   Updated: 2025/09/03 14:06:11 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:23:28 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../libft/includes/libft.h"
+#include "libft.h"
 #include "display.h"
-#include "miniRT.h"
+#include "parsing.h"
 
 static int	add_values(char **line, t_display *display);
 

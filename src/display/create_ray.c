@@ -6,15 +6,15 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 11:08:36 by allefran          #+#    #+#             */
-/*   Updated: 2025/10/17 10:48:14 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:22:01 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "display.h"
-#include "elements.h"
-#include "libft.h"
 #include "utils.h"
+#include "libft.h"
+#include "display.h"
 #include "vectors.h"
+#include "elements.h"
 #include <stdio.h>
 
 static t_ray	calculate_ray(t_display *display, t_viewport viewport);

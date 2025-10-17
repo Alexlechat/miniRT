@@ -6,7 +6,7 @@
 #    By: allefran <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/05 19:11:24 by anpicard          #+#    #+#              #
-#    Updated: 2025/10/17 12:51:59 by allefran         ###   ########.fr        #
+#    Updated: 2025/10/17 13:55:28 by allefran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,9 +49,7 @@ SRCS        := src/core/main.c \
                 src/display/reflection.c \
                 src/display/render.c \
                 src/display/window.c \
-                src/maths/intersection.c \
                 src/maths/maths_utils.c \
-                src/maths/ray.c \
                 src/maths/vector_operation.c \
                 src/maths/vector_utils.c \
                 src/parsing/elements/ambient.c \
@@ -61,7 +59,6 @@ SRCS        := src/core/main.c \
                 src/parsing/objects/add_pl.c \
                 src/parsing/objects/add_sp.c \
                 src/parsing/objects/bonus_objects.c \
-                src/parsing/objects/objects.c \
                 src/parsing/utils/coordinate_utils.c \
                 src/parsing/utils/elements_utils.c \
                 src/parsing/utils/number_utils.c \

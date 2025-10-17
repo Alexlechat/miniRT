@@ -10,9 +10,46 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
-#include "../../libft/includes/libft.h"
+#include "libft.h"
+#include "parsing.h"
 #include <stdlib.h>
+
+static int	validate_coordinate_values(char **arg_splited, int word_count);
+static int	validate_vector_values(char **arg_splited, int word_count);
+
+int	coordinate_check(char *str)
+{
+	char	**arg_splited;
+	int		result;
+
+	if (!str || !*str)
+		return (0);
+	if (!check_consecutive_commas(str))
+		return (0);
+	arg_splited = split_and_validate_count(str);
+	if (!arg_splited)
+		return (0);
+	result = validate_coordinate_values(arg_splited, 3);
+	free_str(arg_splited);
+	return (result);
+}
+
+int	vector_orientation_check(char *str)
+{
+	char	**arg_splited;
+	int		result;
+
+	if (!str || !*str)
+		return (0);
+	if (!check_consecutive_commas(str))
+		return (0);
+	arg_splited = split_and_validate_count(str);
+	if (!arg_splited)
+		return (0);
+	result = validate_vector_values(arg_splited, 3);
+	free_str(arg_splited);
+	return (result);
+}
 
 static int	validate_coordinate_values(char **arg_splited, int word_count)
 {
@@ -30,23 +67,6 @@ static int	validate_coordinate_values(char **arg_splited, int word_count)
 		else
 			i++;
 	}
-	return (result);
-}
-
-int	coordinate_check(char *str)
-{
-	char	**arg_splited;
-	int		result;
-
-	if (!str || !*str)
-		return (0);
-	if (!check_consecutive_commas(str))
-		return (0);
-	arg_splited = split_and_validate_count(str);
-	if (!arg_splited)
-		return (0);
-	result = validate_coordinate_values(arg_splited, 3);
-	free_str(arg_splited);
 	return (result);
 }
 
@@ -73,22 +93,5 @@ static int	validate_vector_values(char **arg_splited, int word_count)
 				i++;
 		}
 	}
-	return (result);
-}
-
-int	vector_or_check(char *str)
-{
-	char	**arg_splited;
-	int		result;
-
-	if (!str || !*str)
-		return (0);
-	if (!check_consecutive_commas(str))
-		return (0);
-	arg_splited = split_and_validate_count(str);
-	if (!arg_splited)
-		return (0);
-	result = validate_vector_values(arg_splited, 3);
-	free_str(arg_splited);
 	return (result);
 }

@@ -10,9 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
-#include "../../libft/includes/libft.h"
+#include "libft.h"
+#include "parsing.h"
 #include <stdlib.h>
+
+static int	trim_trailing_spaces(char *str, int len);
+static void	copy_valid_chars(char *src, char *dest, int len);
+
+char	*trim_newline(char *str)
+{
+	int		len;
+	char	*str_trimed;
+
+	if (!str)
+		return (NULL);
+	len = ft_strlen(str);
+	len = trim_trailing_spaces(str, len);
+	str_trimed = malloc(sizeof(char) * (len + 1));
+	if (!str_trimed)
+		return (NULL);
+	copy_valid_chars(str, str_trimed, len);
+	return (str_trimed);
+}
 
 static int	trim_trailing_spaces(char *str, int len)
 {
@@ -39,20 +58,4 @@ static void	copy_valid_chars(char *src, char *dest, int len)
 		i++;
 	}
 	dest[j] = '\0';
-}
-
-char	*trim_newline(char *str)
-{
-	int		len;
-	char	*str_trimed;
-
-	if (!str)
-		return (NULL);
-	len = ft_strlen(str);
-	len = trim_trailing_spaces(str, len);
-	str_trimed = malloc(sizeof(char) * (len + 1));
-	if (!str_trimed)
-		return (NULL);
-	copy_valid_chars(str, str_trimed, len);
-	return (str_trimed);
 }

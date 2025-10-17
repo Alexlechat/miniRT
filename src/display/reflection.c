@@ -6,12 +6,12 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:52:40 by allefran          #+#    #+#             */
-/*   Updated: 2025/10/17 11:29:35 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:22:18 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "display.h"
 #include "libft.h"
+#include "display.h"
 #include "vectors.h"
 #include <math.h>
 
