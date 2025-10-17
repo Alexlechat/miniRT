@@ -6,13 +6,11 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 09:14:35 by allefran          #+#    #+#             */
-/*   Updated: 2025/10/17 09:43:26 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:30:11 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
-#include "vectors.h"
-#include <math.h>
 
 int	render_scene(t_display *display)
 {

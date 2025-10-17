@@ -6,7 +6,7 @@
 #    By: allefran <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/05 19:11:24 by anpicard          #+#    #+#              #
-#    Updated: 2025/10/17 09:41:06 by allefran         ###   ########.fr        #
+#    Updated: 2025/10/17 11:27:41 by allefran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,13 +34,19 @@ INCS        := -I$(INC_DIR) -I$(LIBFT_DIR)/includes
 # Source files
 SRCS        := src/core/utils.c \
                 src/core/main.c \
+                src/display/calculate/camera.c \
+                src/display/calculate/light.c \
+                src/display/intersection/cylinder_caps.c \
+                src/display/intersection/cylinder_utils.c \
+                src/display/intersection/cylinder.c \
+                src/display/intersection/intersection.c \
+                src/display/intersection/plane.c \
+                src/display/intersection/sphere.c \
                 src/display/init_display.c \
                 src/display/window.c \
                 src/display/display_utils.c \
                 src/display/normal.c \
                 src/display/create_ray.c \
-                src/display/intersection.c \
-                src/display/cylinder.c \
                 src/display/quadratic.c \
                 src/display/reflection.c \
                 src/display/render.c \

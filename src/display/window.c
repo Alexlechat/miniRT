@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anpicard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:41:50 by allefran          #+#    #+#             */
-/*   Updated: 2025/09/02 11:18:14 by anpicard         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:32:14 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,7 @@
 #include "miniRT.h"
 #include <stdlib.h>
 
-int			close_window(t_display *display);
-
-static void	init_mlx(t_display *display)
-{
-	display->mlx = mlx_init();
-	if (!display->mlx)
-		close_window(display);
-}
+static void	init_mlx(t_display *display);
 
 void	init_window(t_display *display)
 {
@@ -29,6 +22,13 @@ void	init_window(t_display *display)
 	display->window = mlx_new_window(display->mlx, display->width,
 			display->height, "miniRT");
 	if (!display->window)
+		close_window(display);
+}
+
+static void	init_mlx(t_display *display)
+{
+	display->mlx = mlx_init();
+	if (!display->mlx)
 		close_window(display);
 }
 
