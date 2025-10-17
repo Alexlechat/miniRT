@@ -6,7 +6,7 @@
 /*   By: allefran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:57:14 by allefran          #+#    #+#             */
-/*   Updated: 2025/10/17 11:36:47 by allefran         ###   ########.fr       */
+/*   Updated: 2025/10/17 12:58:09 by allefran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # define EVENT_CLOSE 17 // (cross X)
 # define DEFAULT_HEIGHT 1000
 # define DEFAULT_WIDTH 1600
-# define ORIGIN_Z 0
 # define RED 0xFF0000
 # define GREEN 0x00FF00
 # define BLUE 0x0000FF
@@ -69,13 +68,13 @@ typedef struct s_display
 }				t_display;
 
 // -----------------------CALCULATE---------------------
+t_camera_basis	calculate_camera_basis(t_vector or);
+t_viewport		calculate_viewport(t_display *display, int pixel_x,
+					int pixel_y);
 void			apply_lighting(t_hit *hit, t_lighting lighting);
 t_lighting		calculate_ambient(t_display *display, t_hit hit);
 t_lighting		calculate_diffuse(t_display *display, t_hit hit,
 					t_lighting lighting);
-t_camera_basis	calculate_camera_basis(t_vector or);
-t_viewport		calculate_viewport(t_display *display, int pixel_x,
-					int pixel_y);
 
 // -----------------------INTERSECTION---------------------
 bool			check_cylinder_caps(t_cylinder *cylinder, t_ray *ray,
@@ -101,19 +100,18 @@ double			plane_intersection(t_display *display, t_plane *plane,
 double			sphere_intersection(t_display *display, t_sphere *sphere,
 					t_ray *ray, t_hit *hit);
 
-void			init_window(t_display *display);
-void			init_display(t_display *display);
-
-int				close_window(t_display *display);
-int				key_press(int key_code, t_display *display);
-int				render_scene(t_display *display);
+// -----------------------DISPLAY---------------------
 int				create_ray(t_display *display, int pixel_x, int pixel_y);
-t_hit			find_closest_hit(t_display *display, t_ray ray);
-
+void			init_display(t_display *display);
+t_vector		sphere_normal(t_sphere *sphere, t_vector *coordinate);
+t_vector		cylinder_normal(t_cylinder *cylinder, t_vector *coordinate);
+bool			solve_quadratic(t_quadratic *quadratic);
 bool			reflection(t_display *display, t_vector origin,
 					t_hit *hit_object);
 t_vector		calculate_light_ray(t_vector origin, t_light *light);
-t_vector		sphere_normal(t_sphere *sphere, t_vector *coordinate);
-t_vector		cylinder_normal(t_cylinder *cylinder, t_vector *coordinate);
+int				render_scene(t_display *display);
+void			init_window(t_display *display);
+int				close_window(t_display *display);
+int				key_press(int key_code, t_display *display);
 
 #endif
