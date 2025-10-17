@@ -3,99 +3,118 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: allefran <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: anpicard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/05 19:11:24 by anpicard          #+#    #+#              #
-#    Updated: 2025/10/17 13:55:28 by allefran         ###   ########.fr        #
+#    Updated: 2025/10/17 14:59:03 by anpicard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all clean fclean re bonus
+NAME		= miniRT
 
-# ==== CONFIGURATION ====
-NAME        := miniRT
-CC          := cc
-CFLAGS      := -Wall -Wextra -Werror -g3
+# Directories
+SRC_DIR		= src
+OBJ_DIR		= .objects
+INC_DIR		= include
+LIBFT_DIR	= libft
+MLX_DIR		= mlx_linux
 
-SRC_DIR     := src
-OBJ_DIR     := .objects
-INC_DIR     := include
+# Libraries
+LIBFT		= $(LIBFT_DIR)/libft.a
+MLX			= $(MLX_DIR)/libmlx.a
 
-LIBFT_DIR   := libft
-LIBFT       := $(LIBFT_DIR)/libft.a
+# Source files
+SRCS		= $(SRC_DIR)/core/main.c \
+			  $(SRC_DIR)/core/utils.c \
+			  $(SRC_DIR)/display/calculate/camera.c \
+			  $(SRC_DIR)/display/calculate/light.c \
+			  $(SRC_DIR)/display/create_ray.c \
+			  $(SRC_DIR)/display/init_display.c \
+			  $(SRC_DIR)/display/intersection/cylinder.c \
+			  $(SRC_DIR)/display/intersection/cylinder_caps.c \
+			  $(SRC_DIR)/display/intersection/cylinder_utils.c \
+			  $(SRC_DIR)/display/intersection/intersection.c \
+			  $(SRC_DIR)/display/intersection/plane.c \
+			  $(SRC_DIR)/display/intersection/sphere.c \
+			  $(SRC_DIR)/display/normal.c \
+			  $(SRC_DIR)/display/quadratic.c \
+			  $(SRC_DIR)/display/reflection.c \
+			  $(SRC_DIR)/display/render.c \
+			  $(SRC_DIR)/display/window.c \
+			  $(SRC_DIR)/maths/maths_utils.c \
+			  $(SRC_DIR)/maths/vector_operation.c \
+			  $(SRC_DIR)/maths/vector_utils.c \
+			  $(SRC_DIR)/parsing/elements/ambient.c \
+			  $(SRC_DIR)/parsing/elements/camera.c \
+			  $(SRC_DIR)/parsing/elements/light.c \
+			  $(SRC_DIR)/parsing/file.c \
+			  $(SRC_DIR)/parsing/objects/add_cy.c \
+			  $(SRC_DIR)/parsing/objects/add_pl.c \
+			  $(SRC_DIR)/parsing/objects/add_sp.c \
+			  $(SRC_DIR)/parsing/objects/bonus_objects.c \
+			  $(SRC_DIR)/parsing/parsing.c \
+			  $(SRC_DIR)/parsing/parsing_dispatch.c \
+			  $(SRC_DIR)/parsing/parsing_helpers.c \
+			  $(SRC_DIR)/parsing/utils/coordinate_utils.c \
+			  $(SRC_DIR)/parsing/utils/elements_utils.c \
+			  $(SRC_DIR)/parsing/utils/number_utils.c \
+			  $(SRC_DIR)/parsing/utils/trim_utils.c \
+			  $(SRC_DIR)/parsing/validation/validation_helpers.c \
+			  $(SRC_DIR)/parsing/validation/validation_utils.c
 
-MLX_DIR     := mlx_linux
-MLX         := $(MLX_DIR)/libmlx_Linux.a
-MLX_FLAGS   := -I/usr/include -I$(MLX_DIR)
-MLX_LINKS   := -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+# Object files
+OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-INCS        := -I$(INC_DIR) -I$(LIBFT_DIR)/includes
+# Headers
+HEADERS		= $(INC_DIR)/display.h \
+			  $(INC_DIR)/elements.h \
+			  $(INC_DIR)/objects.h \
+			  $(INC_DIR)/parsing.h \
+			  $(INC_DIR)/utils.h \
+			  $(INC_DIR)/vectors.h
 
-# ==== SOURCE FILES ====
-SRCS        := src/core/main.c \
-                src/core/utils.c \
-                src/display/calculate/camera.c \
-                src/display/calculate/light.c \
-                src/display/intersection/cylinder_caps.c \
-                src/display/intersection/cylinder_utils.c \
-                src/display/intersection/cylinder.c \
-                src/display/intersection/intersection.c \
-                src/display/intersection/plane.c \
-                src/display/intersection/sphere.c \
-                src/display/create_ray.c \
-                src/display/init_display.c \
-                src/display/normal.c \
-                src/display/quadratic.c \
-                src/display/reflection.c \
-                src/display/render.c \
-                src/display/window.c \
-                src/maths/maths_utils.c \
-                src/maths/vector_operation.c \
-                src/maths/vector_utils.c \
-                src/parsing/elements/ambient.c \
-                src/parsing/elements/camera.c \
-                src/parsing/elements/light.c \
-                src/parsing/objects/add_cy.c \
-                src/parsing/objects/add_pl.c \
-                src/parsing/objects/add_sp.c \
-                src/parsing/objects/bonus_objects.c \
-                src/parsing/utils/coordinate_utils.c \
-                src/parsing/utils/elements_utils.c \
-                src/parsing/utils/number_utils.c \
-                src/parsing/utils/trim_utils.c \
-                src/parsing/validation/validation_helpers.c \
-                src/parsing/validation/validation_utils.c \
-                src/parsing/file.c \
-                src/parsing/parsing_dispatch.c \
-                src/parsing/parsing_helpers.c \
-                src/parsing/parsing.c
+# Compiler and flags
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIBFT_DIR)/includes -I$(MLX_DIR)
+LDFLAGS		= -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+RM			= rm -f
 
-OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+# Colors
+GREEN		= \033[0;32m
+RED			= \033[0;31m
+RESET		= \033[0m
 
-# ==== RULES ====
+# Rules
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLX) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_LINKS) -o $@
+	@$(CC) $(OBJS) $(LDFLAGS) -o $(NAME)
+	@echo "$(GREEN)✓ $(NAME) compiled successfully$(RESET)"
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) Makefile
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(MLX_FLAGS) $(INCS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$(GREEN)✓$(RESET) Compiled $<"
 
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+$(LIBFT): FORCE
+	@$(MAKE) -C $(LIBFT_DIR)
 
-$(MLX):
-	$(MAKE) -C $(MLX_DIR)
+$(MLX): FORCE
+	@$(MAKE) -C $(MLX_DIR)
 
 clean:
-	rm -rf $(OBJ_DIR)
-	$(MAKE) clean -C $(LIBFT_DIR)
-	$(MAKE) clean -C $(MLX_DIR)
+	@$(RM) -r $(OBJ_DIR)
+	@$(MAKE) -C $(LIBFT_DIR) clean
+	@$(MAKE) -C $(MLX_DIR) clean
+	@echo "$(RED)✗ Object files removed$(RESET)"
 
 fclean: clean
-	rm -f $(NAME) $(LIBFT) $(MLX)
+	@$(RM) $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@echo "$(RED)✗ $(NAME) removed$(RESET)"
 
 re: fclean all
 
-bonus: all
+FORCE:
+
+.PHONY: all clean fclean re FORCE
