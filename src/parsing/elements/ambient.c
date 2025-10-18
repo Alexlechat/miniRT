@@ -19,20 +19,20 @@ static int	add_values(char **line, t_display *display);
 int	ambient(char **line, int *ambient_count, t_display *display)
 {
 	if (!line || !ambient_count || !display)
-		return (0);
+		return (print_error_msg("Invalid ambient light parameters\n"));
 	if (!line[0] || !line[1] || !line[2])
-		return (0);
+		return (print_error_msg("Ambient light: missing parameters\n"));
 	if (line[3] != NULL)
-		return (0);
+		return (print_error_msg("Ambient light: too many parameters\n"));
 	if (!ratio_check(line[1]))
-		return (0);
+		return (print_error_msg("Ambient light: invalid brightness ratio\n"));
 	if (!color_check(line[2]))
-		return (0);
+		return (print_error_msg("Ambient light: invalid color format\n"));
 	(*ambient_count)++;
 	if (*ambient_count > 1)
-		return (0);
+		return (print_error_msg("Ambient light: duplicate definition\n"));
 	if (!add_values(line, display))
-		return (0);
+		return (print_error_msg("Ambient light: failed to parse values\n"));
 	return (1);
 }
 

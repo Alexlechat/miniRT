@@ -19,12 +19,11 @@
 static char	**split_trimed(char *line);
 static char	**allocate_trim_array(char **line_splited, int word_count);
 static int	process_trimmed_words(char **line_splited, char **trim_splited);
+static int	dispatch_parsing(char *id, char **line, int **c, t_display *d);
 
 int	parse_line(char *line, t_count *count, t_display *display)
 {
 	char	**line_splited;
-	char	*identifier;
-	int		result;
 	int		*counts[3];
 
 	counts[0] = &count->ambient;
@@ -33,17 +32,25 @@ int	parse_line(char *line, t_count *count, t_display *display)
 	line_splited = split_trimed(line);
 	if (!line_splited)
 		return (0);
-	identifier = line_splited[0];
-	if (!identifier)
+	if (!line_splited[0])
 	{
 		free_str(line_splited);
 		return (1);
 	}
-	result = parse_mandatory_elements(identifier, line_splited, counts,
-			display);
+	return (dispatch_parsing(line_splited[0], line_splited, counts, display));
+}
+
+static int	dispatch_parsing(char *id, char **line, int **c, t_display *d)
+{
+	int	result;
+
+	result = parse_mandatory_elements(id, line, c, d);
 	if (result == -1)
-		result = parse_bonus_objects(identifier, line_splited, display);
-	free_str(line_splited);
+		result = parse_bonus_objects(id, line, d);
+	free_str(line);
+	if (result == -1)
+		return (print_error_msg("Invalid or unknown identifier "
+				"in scene file\n"));
 	return (result);
 }
 

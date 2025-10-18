@@ -35,7 +35,7 @@ int	add_values_sp(char **line, t_display *display)
 	current_index = display->nb_spheres;
 	if (!parse_position(line[1], &display->sphere[current_index].position))
 		return (0);
-	display->sphere[current_index].radius = ft_atoi(line[2]) / 2;
+	display->sphere[current_index].radius = ft_atof(line[2]) / 2.0;
 	if (!parse_color(line[3], &display->sphere[current_index].color))
 		return (0);
 	display->nb_spheres++;

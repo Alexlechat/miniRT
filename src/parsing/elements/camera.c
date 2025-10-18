@@ -22,22 +22,22 @@ static int	add_values(char **line, t_display *display);
 int	camera(char **line, int *camera_count, t_display *display)
 {
 	if (!line || !camera_count || !display)
-		return (0);
+		return (print_error_msg("Invalid camera parameters\n"));
 	if (!line[0] || !line[1] || !line[2] || !line[3])
-		return (0);
+		return (print_error_msg("Camera: missing parameters\n"));
 	if (line[4] != NULL)
-		return (0);
+		return (print_error_msg("Camera: too many parameters\n"));
 	if (!coordinate_check(line[1]))
-		return (0);
+		return (print_error_msg("Camera: invalid position coordinates\n"));
 	if (!vector_orientation_check(line[2]))
-		return (0);
+		return (print_error_msg("Camera: invalid orientation vector\n"));
 	if (!fov_check(line[3]))
-		return (0);
+		return (print_error_msg("Camera: invalid FOV (must be 0-180)\n"));
 	(*camera_count)++;
 	if (*camera_count > 1)
-		return (0);
+		return (print_error_msg("Camera: duplicate definition\n"));
 	if (!add_values(line, display))
-		return (0);
+		return (print_error_msg("Camera: failed to parse values\n"));
 	return (1);
 }
 

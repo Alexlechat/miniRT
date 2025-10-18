@@ -21,22 +21,22 @@ static int	add_values(char **line, t_display *display);
 int	light(char **line, int *light_count, t_display *display)
 {
 	if (!line || !light_count || !display)
-		return (0);
+		return (print_error_msg("Invalid light parameters\n"));
 	if (!line[0] || !line[1] || !line[2] || !line[3])
-		return (0);
+		return (print_error_msg("Light: missing parameters\n"));
 	if (line[4] != NULL)
-		return (0);
+		return (print_error_msg("Light: too many parameters\n"));
 	if (!coordinate_check(line[1]))
-		return (0);
+		return (print_error_msg("Light: invalid position coordinates\n"));
 	if (!ratio_check(line[2]))
-		return (0);
+		return (print_error_msg("Light: invalid brightness ratio\n"));
 	if (!color_check(line[3]))
-		return (0);
+		return (print_error_msg("Light: invalid color format\n"));
 	(*light_count)++;
 	if (*light_count > 1)
-		return (0);
+		return (print_error_msg("Light: duplicate definition\n"));
 	if (!add_values(line, display))
-		return (0);
+		return (print_error_msg("Light: failed to parse values\n"));
 	return (1);
 }
 

@@ -58,11 +58,11 @@ bool	calculate_cap_hit(t_cylinder *cylinder, t_ray *ray, t_hit *hit,
 
 	cap_center = add(cylinder->position, multiply(cylinder->or, cap_offset));
 	denom = dot(ray->direction, cylinder->or);
-	if (fabs(denom) <= 1e-6)
+	if (fabs(denom) < 1e-6)
 		return (false);
 	to_cap = substract(cap_center, ray->origin);
 	t = dot(to_cap, cylinder->or) / denom;
-	if (t < 0.001)
+	if (t < 1e-6)
 		return (false);
 	hit_point = add(ray->origin, multiply(ray->direction, t));
 	if (check_cap_distance(hit_point, cap_center, cylinder))

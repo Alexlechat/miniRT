@@ -59,6 +59,7 @@ int		parse_file(char *file_name, t_display *display);
 void	free_str(char **str);
 void	free_display(t_display *display);
 int		print_error(char *str, int fd);
+int		print_error_msg(char *msg);
 int		count_words(char **str);
 
 #endif

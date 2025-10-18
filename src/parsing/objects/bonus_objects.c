@@ -32,15 +32,15 @@ int	bonus_check(char **line_splited, t_display *display)
 static int	plane(char **line, t_display *display)
 {
 	if (line[1] && !coordinate_check(line[1]))
-		return (0);
+		return (print_error_msg("Plane: invalid position coordinates\n"));
 	if (line[2] && !vector_orientation_check(line[2]))
-		return (0);
+		return (print_error_msg("Plane: invalid orientation vector\n"));
 	if (line[3] && !color_check(line[3]))
-		return (0);
+		return (print_error_msg("Plane: invalid color format\n"));
 	if (line[4])
-		return (0);
+		return (print_error_msg("Plane: too many parameters\n"));
 	if (!add_values_pl(line, display))
-		return (0);
+		return (print_error_msg("Plane: failed to parse values\n"));
 	return (1);
 }
 
@@ -49,21 +49,21 @@ static int	sphere(char **line, t_display *display)
 	double	diameter;
 
 	if (line[1] && !coordinate_check(line[1]))
-		return (0);
+		return (print_error_msg("Sphere: invalid position coordinates\n"));
 	if (line[2])
 	{
 		if (!is_valid_number(line[2]))
-			return (0);
+			return (print_error_msg("Sphere: invalid diameter format\n"));
 		diameter = ft_atof(line[2]);
 		if (diameter <= 0)
-			return (0);
+			return (print_error_msg("Sphere: diameter must be positive\n"));
 	}
 	if (line[3] && !color_check(line[3]))
-		return (0);
+		return (print_error_msg("Sphere: invalid color format\n"));
 	if (line[4])
-		return (0);
+		return (print_error_msg("Sphere: too many parameters\n"));
 	if (!add_values_sp(line, display))
-		return (0);
+		return (print_error_msg("Sphere: failed to parse values\n"));
 	return (1);
 }
 
@@ -75,18 +75,18 @@ static int	validate_cylinder_dimensions(char **line)
 	if (line[3])
 	{
 		if (!is_valid_number(line[3]))
-			return (0);
+			return (print_error_msg("Cylinder: invalid diameter format\n"));
 		diameter = ft_atof(line[3]);
 		if (diameter <= 0)
-			return (0);
+			return (print_error_msg("Cylinder: diameter must be positive\n"));
 	}
 	if (line[4])
 	{
 		if (!is_valid_number(line[4]))
-			return (0);
+			return (print_error_msg("Cylinder: invalid height format\n"));
 		height = ft_atof(line[4]);
 		if (height <= 0)
-			return (0);
+			return (print_error_msg("Cylinder: height must be positive\n"));
 	}
 	return (1);
 }
@@ -94,16 +94,16 @@ static int	validate_cylinder_dimensions(char **line)
 static int	cylinder(char **line, t_display *display)
 {
 	if (line[1] && !coordinate_check(line[1]))
-		return (0);
+		return (print_error_msg("Cylinder: invalid position coordinates\n"));
 	if (line[2] && !vector_orientation_check(line[2]))
-		return (0);
+		return (print_error_msg("Cylinder: invalid orientation vector\n"));
 	if (!validate_cylinder_dimensions(line))
 		return (0);
 	if (line[5] && !color_check(line[5]))
-		return (0);
+		return (print_error_msg("Cylinder: invalid color format\n"));
 	if (line[6])
-		return (0);
+		return (print_error_msg("Cylinder: too many parameters\n"));
 	if (!add_values_cy(line, display))
-		return (0);
+		return (print_error_msg("Cylinder: failed to parse values\n"));
 	return (1);
 }

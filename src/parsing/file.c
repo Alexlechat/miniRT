@@ -21,9 +21,9 @@ static int	validate_file_name(char *file_name);
 int	validate_file(char *file_name)
 {
 	if (!file_exist(file_name))
-		return (0);
+		return (print_error_msg("File does not exist or cannot be opened\n"));
 	if (!validate_file_name(file_name))
-		return (0);
+		return (print_error_msg("Invalid file extension (expected .rt)\n"));
 	return (1);
 }
 

@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	ft_memset(&display, 0, sizeof(display));
 	init_display(&display);
 	if (!parse_file(argv[1], &display))
-		return (print_error("Error\n", 2));
+		return (1);
 	init_window(&display);
 	mlx_loop_hook(display.mlx, &render_scene, &display);
 	mlx_hook(display.window, EVENT_CLOSE, 0, close_window, &display);

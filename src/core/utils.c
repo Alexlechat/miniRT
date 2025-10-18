@@ -55,6 +55,14 @@ int	print_error(char *str, int fd)
 	return (0);
 }
 
+int	print_error_msg(char *msg)
+{
+	ft_putstr_fd("Error\n", 2);
+	if (msg)
+		ft_putstr_fd(msg, 2);
+	return (0);
+}
+
 int	count_words(char **str)
 {
 	int	i;

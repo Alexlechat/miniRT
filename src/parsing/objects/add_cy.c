@@ -40,7 +40,7 @@ int	add_values_cy(char **line, t_display *display)
 	if (!parse_vector(line[2], &display->cylinder[index].or))
 		return (0);
 	display->cylinder[index].or = normalize(display->cylinder[index].or);
-	display->cylinder[index].radius = ft_atoi(line[3]) / 2;
+	display->cylinder[index].radius = ft_atof(line[3]) / 2.0;
 	display->cylinder[index].height = ft_atof(line[4]);
 	if (!parse_color(line[5], &display->cylinder[index].color))
 		return (0);

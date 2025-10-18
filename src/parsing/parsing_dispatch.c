@@ -36,5 +36,5 @@ int	parse_bonus_objects(char *identifier, char **line_splited,
 		return (bonus_check(line_splited, display));
 	else if (ft_strncmp(identifier, "cy", 2) == 0)
 		return (bonus_check(line_splited, display));
-	return (0);
+	return (-1);
 }

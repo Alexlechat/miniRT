@@ -19,6 +19,7 @@
 #include <stdbool.h>
 
 static int	process_file_lines(int fd, t_count *count, t_display *display);
+static int	validate_mandatory_counts(t_count *count);
 
 int	parse_file(char *file_name, t_display *display)
 {
@@ -32,14 +33,14 @@ int	parse_file(char *file_name, t_display *display)
 		return (0);
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-		return (0);
+		return (print_error_msg("Failed to open file\n"));
 	if (!process_file_lines(fd, &count, display))
 	{
 		close(fd);
 		return (0);
 	}
 	close(fd);
-	if (count.ambient != 1 || count.camera != 1 || count.light != 1)
+	if (!validate_mandatory_counts(&count))
 		return (0);
 	calculate_focal(display);
 	camera_offset(display);
@@ -47,25 +48,37 @@ int	parse_file(char *file_name, t_display *display)
 	return (1);
 }
 
+static int	validate_mandatory_counts(t_count *count)
+{
+	if (count->ambient != 1)
+		return (print_error_msg("Scene must have exactly one ambient light\n"));
+	if (count->camera != 1)
+		return (print_error_msg("Scene must have exactly one camera\n"));
+	if (count->light != 1)
+		return (print_error_msg("Scene must have exactly one light\n"));
+	return (1);
+}
+
 static int	process_file_lines(int fd, t_count *count, t_display *display)
 {
 	char	*line;
-	bool	parse_error;
 
-	parse_error = false;
 	line = get_next_line(fd);
 	while (line)
 	{
 		if (parse_line(line, count, display) != 1)
-			parse_error = true;
+		{
+			free(line);
+			while (line)
+			{
+				line = get_next_line(fd);
+				free(line);
+			}
+			free_display(display);
+			return (0);
+		}
 		free(line);
 		line = get_next_line(fd);
-	}
-	if (parse_error)
-	{
-		free(line);
-		free_display(display);
-		return (0);
 	}
 	return (1);
 }

@@ -16,6 +16,7 @@
 
 static int	validate_coordinate_values(char **arg_splited, int word_count);
 static int	validate_vector_values(char **arg_splited, int word_count);
+static int	check_vector_range(char **arg_splited, int i, int *all_zero);
 
 int	coordinate_check(char *str)
 {
@@ -70,28 +71,39 @@ static int	validate_coordinate_values(char **arg_splited, int word_count)
 	return (result);
 }
 
+static int	check_vector_range(char **arg_splited, int i, int *all_zero)
+{
+	double	val;
+
+	val = ft_atof(arg_splited[i]);
+	if (val < -1.0 || val > 1.0)
+		return (0);
+	if (val != 0.0)
+		*all_zero = 0;
+	return (1);
+}
+
 static int	validate_vector_values(char **arg_splited, int word_count)
 {
 	int		i;
-	double	val;
 	int		result;
+	int		all_zero;
 
 	result = 1;
 	i = 0;
+	all_zero = 1;
 	while (i < 3 && result)
 	{
 		if (!arg_splited[i] || i >= word_count)
 			result = 0;
 		else if (!*arg_splited[i] || !is_valid_number(arg_splited[i]))
 			result = 0;
+		else if (!check_vector_range(arg_splited, i, &all_zero))
+			result = 0;
 		else
-		{
-			val = ft_atof(arg_splited[i]);
-			if (val < -1.0 || val > 1.0)
-				result = 0;
-			else
-				i++;
-		}
+			i++;
 	}
+	if (all_zero)
+		result = 0;
 	return (result);
 }
