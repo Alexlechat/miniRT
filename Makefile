@@ -6,7 +6,7 @@
 #    By: allefran <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/05 19:11:24 by anpicard          #+#    #+#              #
-#    Updated: 2025/10/18 14:45:56 by allefran         ###   ########.fr        #
+#    Updated: 2025/10/18 14:48:25 by allefran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,7 @@ $(NAME): $(LIBFT) $(MLX) $(OBJS)
 	@$(CC) $(OBJS) $(LDFLAGS) -o $(NAME)
 	@echo "$(GREEN)✓ $(NAME) compiled successfully$(RESET)"
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) Makefile
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) Makefile $(MLX)
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(GREEN)✓$(RESET) Compiled $<"
