@@ -1,4 +1,4 @@
-# 🎨 miniRT - Ray Tracer Minimaliste
+# miniRT - Ray Tracer Minimaliste
 
 ![42 School](https://img.shields.io/badge/42-School-000000?style=flat-square&logo=42)
 ![C](https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white)
@@ -6,7 +6,7 @@
 
 **miniRT** est un projet de ray tracing développé dans le cadre du cursus de l'école 42. Il permet de générer des images 3D réalistes à partir de scènes décrites dans des fichiers `.rt`, en utilisant les principes fondamentaux du ray tracing.
 
-## 📋 Table des matières
+##  Table des matières
 
 - [Fonctionnalités](#-fonctionnalités)
 - [Prérequis](#-prérequis)
@@ -18,7 +18,7 @@
 - [Algorithmes implémentés](#-algorithmes-implémentés)
 - [Auteurs](#-auteurs)
 
-## ✨ Fonctionnalités
+##  Fonctionnalités
 
 - **Ray Tracing** : Calcul précis des intersections rayon-objet
 - **Objets 3D supportés** :
@@ -100,7 +100,7 @@ make re       # Recompile tout
 ./miniRT scene/test_shadows.rt
 ```
 
-## 📝 Format des fichiers de scène
+##  Format des fichiers de scène
 
 Les fichiers `.rt` décrivent la scène en utilisant une syntaxe simple. Chaque ligne représente un élément.
 
@@ -196,14 +196,14 @@ cy 0,1.5,30 0,1,0 2 3 100,255,100
 cy -8,1.5,25 1,0,0 1.5 6 255,100,255
 ```
 
-## 🎯 Contrôles
+##  Contrôles
 
 | Touche | Action |
 |--------|--------|
 | `ESC` | Quitter le programme |
 | `X` (croix) | Fermer la fenêtre |
 
-## 🧮 Algorithmes implémentés
+##  Algorithmes implémentés
 
 ### Ray Tracing
 - **Génération de rayons** : Calcul des rayons primaires depuis la caméra
@@ -225,7 +225,7 @@ Couleur_finale = Ambiante + Diffuse
 - **Plan** : `normale = vecteur_normal_du_plan`
 - **Cylindre** : Projection sur l'axe perpendiculaire
 
-## 📂 Structure du projet
+##  Structure du projet
 
 ```
 miniRT/
@@ -275,17 +275,16 @@ Le programme gère les erreurs suivantes :
 
 En cas d'erreur, un message explicite est affiché sur `stderr`.
 
-## 📚 Ressources
+##  Ressources
 
 - [Ray Tracing in One Weekend](https://raytracing.github.io/)
 - [Scratchapixel - Ray Tracing](https://www.scratchapixel.com/)
 - [Phong Reflection Model](https://en.wikipedia.org/wiki/Phong_reflection_model)
 
-## 👥 Auteurs
+##  Auteurs
 
 - **Antonin Picard** - [@antoninpicard](https://github.com/antoninpicard)
 - **Alexandre Lefranc** - allefran
 
 ---
 
-*Projet réalisé dans le cadre du cursus de l'école 42* 🚀
