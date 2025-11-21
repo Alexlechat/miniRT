@@ -34,7 +34,7 @@
   - Champ de vision (FOV) ajustable
 - **Rendu en temps réel** avec la MiniLibX
 
-## 🔧 Prérequis
+##  Prérequis
 
 - **Système d'exploitation** : Linux (testé sur Ubuntu/Debian)
 - **Compilateur** : `gcc` ou `cc`
@@ -76,7 +76,7 @@ make fclean   # Supprime les .o et l'exécutable
 make re       # Recompile tout
 ```
 
-## 🎮 Utilisation
+##  Utilisation
 
 ### Lancer une scène
 
@@ -248,7 +248,7 @@ miniRT/
 └── README.md         # Ce fichier
 ```
 
-## 🛠️ Makefile
+##  Makefile
 
 Le Makefile est optimisé pour éviter les recompilations inutiles :
 
@@ -264,7 +264,7 @@ make fclean   # Supprime tout (objets + exécutable)
 make re       # Recompile tout
 ```
 
-## 🐛 Gestion des erreurs
+##  Gestion des erreurs
 
 Le programme gère les erreurs suivantes :
 - ✅ Fichier `.rt` invalide ou inexistant
