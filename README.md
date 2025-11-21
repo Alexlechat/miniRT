@@ -51,7 +51,7 @@ sudo apt-get update
 sudo apt-get install gcc make xorg libxext-dev libbsd-dev
 ```
 
-## 🚀 Installation
+##  Installation
 
 1. **Cloner le dépôt** :
 ```bash
